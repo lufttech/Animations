@@ -7,8 +7,11 @@
 //
 
 #import "NutritionTableViewController.h"
+#import "NutritionCell.h"
+
 
 @interface NutritionTableViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *apm;
 
 @end
 
@@ -16,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.tableView.rowHeight = 35.0f;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -28,17 +31,35 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)setCellData:(NSArray *)cellData
+{
+	_cellData = cellData;
+	[self.tableView reloadData];
+}
 #pragma mark - Table view data source
 
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+	return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+	
+	return _cellData.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	NutritionCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NutritionCell class]) forIndexPath:indexPath];
+	NSDictionary* nutrition = _cellData[indexPath.row];
+	cell.component.text = nutrition[@"component"];
+	cell.valueText.text = [NSString stringWithFormat:@"%@ %@",nutrition[@"mass"],nutrition[@"metrick"]];
+	if (indexPath.row%2 == 0) {
+		cell.coloredUnderlay.backgroundColor = [UIColor colorWithRed:246.0f/255.f green:246.0f/255.f blue:246.0f/255.f alpha:1];
+	}else{
+		cell.coloredUnderlay.backgroundColor = [UIColor whiteColor];
+	}
+	
+	return cell;
 }
 
 /*

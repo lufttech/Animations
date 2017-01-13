@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		B5F43AE4ED59E0776B27EC6C /* libPods-AnimaTions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 956F41754F19DC880BDC8305 /* libPods-AnimaTions.a */; };
 		D20C10291E264BA100E91785 /* UIViewController+Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = D20C10281E264BA100E91785 /* UIViewController+Transition.m */; };
+		D27E6F791E28F9E800F21135 /* IngredientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D27E6F781E28F9E800F21135 /* IngredientCell.m */; };
+		D27E6F7C1E28F9F400F21135 /* TipsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D27E6F7B1E28F9F400F21135 /* TipsCell.m */; };
+		D27E6F7F1E28FA0400F21135 /* NutritionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D27E6F7E1E28FA0400F21135 /* NutritionCell.m */; };
 		D2889F531E13C28800E36ECF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2889F521E13C28800E36ECF /* main.m */; };
 		D2889F561E13C28800E36ECF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2889F551E13C28800E36ECF /* AppDelegate.m */; };
 		D2889F591E13C28800E36ECF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2889F581E13C28800E36ECF /* ViewController.m */; };
@@ -53,6 +56,12 @@
 		956F41754F19DC880BDC8305 /* libPods-AnimaTions.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AnimaTions.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20C10271E264BA100E91785 /* UIViewController+Transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Transition.h"; sourceTree = "<group>"; };
 		D20C10281E264BA100E91785 /* UIViewController+Transition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Transition.m"; sourceTree = "<group>"; };
+		D27E6F771E28F9E800F21135 /* IngredientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngredientCell.h; sourceTree = "<group>"; };
+		D27E6F781E28F9E800F21135 /* IngredientCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientCell.m; sourceTree = "<group>"; };
+		D27E6F7A1E28F9F400F21135 /* TipsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsCell.h; sourceTree = "<group>"; };
+		D27E6F7B1E28F9F400F21135 /* TipsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipsCell.m; sourceTree = "<group>"; };
+		D27E6F7D1E28FA0400F21135 /* NutritionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NutritionCell.h; sourceTree = "<group>"; };
+		D27E6F7E1E28FA0400F21135 /* NutritionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NutritionCell.m; sourceTree = "<group>"; };
 		D2889F4E1E13C28800E36ECF /* AnimaTions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimaTions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2889F521E13C28800E36ECF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D2889F541E13C28800E36ECF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -248,6 +257,12 @@
 				D2889F771E13D42E00E36ECF /* MainCell.m */,
 				D2889F7E1E13EF6C00E36ECF /* RecipeCell.h */,
 				D2889F7F1E13EF6C00E36ECF /* RecipeCell.m */,
+				D27E6F771E28F9E800F21135 /* IngredientCell.h */,
+				D27E6F781E28F9E800F21135 /* IngredientCell.m */,
+				D27E6F7A1E28F9F400F21135 /* TipsCell.h */,
+				D27E6F7B1E28F9F400F21135 /* TipsCell.m */,
+				D27E6F7D1E28FA0400F21135 /* NutritionCell.h */,
+				D27E6F7E1E28FA0400F21135 /* NutritionCell.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -437,7 +452,9 @@
 				D2E32CE51E254E2E00E5FC6E /* TransitionAnimator.m in Sources */,
 				D2E32CDE1E2549DE00E5FC6E /* MagicPresentationController.m in Sources */,
 				D2FE8C4C1E28017400D2EC21 /* UIViewController+Configurator.m in Sources */,
+				D27E6F7F1E28FA0400F21135 /* NutritionCell.m in Sources */,
 				D2889F7D1E13EBB300E36ECF /* LoremIpsum+FakeRecipe.m in Sources */,
+				D27E6F7C1E28F9F400F21135 /* TipsCell.m in Sources */,
 				D2889F561E13C28800E36ECF /* AppDelegate.m in Sources */,
 				D2FE8C4F1E2817C400D2EC21 /* RecipePageViewController.m in Sources */,
 				D2889F801E13EF6C00E36ECF /* RecipeCell.m in Sources */,
@@ -445,6 +462,7 @@
 				D2B547D41E1FE97400859CE0 /* DetailRecipeViewController.m in Sources */,
 				D2FE8C581E28181800D2EC21 /* NutritionTableViewController.m in Sources */,
 				D2FE8C521E2817FF00D2EC21 /* IngredientsTableViewController.m in Sources */,
+				D27E6F791E28F9E800F21135 /* IngredientCell.m in Sources */,
 				D2FE8C551E28180D00D2EC21 /* TipsTableViewController.m in Sources */,
 				D2889F531E13C28800E36ECF /* main.m in Sources */,
 			);

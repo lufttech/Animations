@@ -7,6 +7,7 @@
 //
 
 #import "IngredientsTableViewController.h"
+#import "IngredientCell.h"
 
 @interface IngredientsTableViewController ()
 
@@ -29,16 +30,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setCellData:(NSDictionary *)cellData
+{
+	_cellData = cellData;
+	[self.tableView reloadData];
+}
 #pragma mark - Table view data source
 
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+	return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+	
+	return _cellData.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	IngredientCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([IngredientCell class]) forIndexPath:indexPath];
+	return cell;
 }
 
 /*

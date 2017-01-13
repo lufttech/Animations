@@ -83,9 +83,9 @@
 - (void)setCellData:(NSDictionary *)cellData
 {
 	_cellData = cellData;
-	[self.ingredientsViewController setCellData:cellData];
-	[self.tipsViewController setCellData:cellData];
-	[self.nutritionViewController setCellData:cellData];
+	[self.ingredientsViewController setCellData:cellData[@"ingredients"]];
+	[self.tipsViewController setCellData:cellData[@"tips"]];
+	[self.nutritionViewController setCellData:cellData[@"nutrition"]];
 }
 
 #pragma mark - Page Controller Delegate

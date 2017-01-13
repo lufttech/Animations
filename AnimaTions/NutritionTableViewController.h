@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface NutritionTableViewController : UITableViewController
-@property (nonatomic, strong) NSDictionary* cellData;
+@property (nonatomic, strong) NSArray* cellData;
 @end
