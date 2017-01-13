@@ -1,0 +1,620 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06E7D2E442D29969F491F4E267EB28BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC5D9C5B838BE747D0154460D02F926 /* Foundation.framework */; };
+		17C72C8B5D8A45B47B781FC34641AE95 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC5D9C5B838BE747D0154460D02F926 /* Foundation.framework */; };
+		6140FA9151F304FDD10E084CB7A10442 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FF7265001B85FC40DFE6D5AD2176B5 /* HMSegmentedControl.m */; };
+		6EE359AF1B748D98A3AFB875CF6C69F1 /* LoremIpsum.m in Sources */ = {isa = PBXBuildFile; fileRef = 3699EB4050D006EA5F4044E587DAA60B /* LoremIpsum.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		7DDB28DA286509E18EF2D9B77EB32E0F /* LoremIpsum.h in Headers */ = {isa = PBXBuildFile; fileRef = A8814057DC0B16C95653D9E13FE9CA36 /* LoremIpsum.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9B0932E6B641F4E97196430F2B20D129 /* LoremIpsum-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E0C0E2C23292BCEF3BF991F531AACD05 /* LoremIpsum-dummy.m */; };
+		A5C58E98A560F8E832748A2B309736A1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACC64101FAE4862F8806DB02FC71B0E /* QuartzCore.framework */; };
+		BDFD18B3FAB1DE3FD2FC2307E4A4F6A3 /* HMSegmentedControl-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 330D210A959376D7C8A2A1ABA8B56D7C /* HMSegmentedControl-dummy.m */; };
+		BFC487AF0EF719A47A77BDEB3A8B8FB6 /* HMSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = B7AE9C3077F4E568F117A4FE0664631F /* HMSegmentedControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CFA6B39E92B74C024D3C7C343A17658D /* Pods-AnimaTions-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FA5FC9B8E199A02EF12E74CCC50E09 /* Pods-AnimaTions-dummy.m */; };
+		F0A1F233B3B233D445A29F988BFAB585 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC5D9C5B838BE747D0154460D02F926 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A7CEE4F6C9358E1975498E14D4BF448D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E66B362AE57238557E51E1B585B5C93;
+			remoteInfo = HMSegmentedControl;
+		};
+		B29E751B4431B231ADA8F9879F52E336 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4787B8AA7B57F812D0780B972F055FD1;
+			remoteInfo = LoremIpsum;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		20B8CFB12A1DF5B18061D01F90A26D57 /* libLoremIpsum.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libLoremIpsum.a; path = libLoremIpsum.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		22FA752E8AFCAF64CDD0C3AB9E34A499 /* Pods-AnimaTions-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AnimaTions-acknowledgements.plist"; sourceTree = "<group>"; };
+		2646685AF28F5468077D33B8F25CE9F6 /* LoremIpsum-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LoremIpsum-prefix.pch"; sourceTree = "<group>"; };
+		27FF7265001B85FC40DFE6D5AD2176B5 /* HMSegmentedControl.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HMSegmentedControl.m; path = HMSegmentedControl/HMSegmentedControl.m; sourceTree = "<group>"; };
+		2AFE7B94E09F859251E6EB5C0E54BAF4 /* HMSegmentedControl.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HMSegmentedControl.xcconfig; sourceTree = "<group>"; };
+		330D210A959376D7C8A2A1ABA8B56D7C /* HMSegmentedControl-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HMSegmentedControl-dummy.m"; sourceTree = "<group>"; };
+		33127D2149019DF8D341C59E95F62F1F /* Pods-AnimaTions.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AnimaTions.release.xcconfig"; sourceTree = "<group>"; };
+		3699EB4050D006EA5F4044E587DAA60B /* LoremIpsum.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LoremIpsum.m; path = LoremIpsum/LoremIpsum.m; sourceTree = "<group>"; };
+		376AC142847F18B2A6EC7443CB30426C /* Pods-AnimaTions.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AnimaTions.debug.xcconfig"; sourceTree = "<group>"; };
+		39248AD05B54DBC55D33F808E7E69504 /* libHMSegmentedControl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libHMSegmentedControl.a; path = libHMSegmentedControl.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AC5D9C5B838BE747D0154460D02F926 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		544F2B39432E8F6E406316C691861E1A /* Pods-AnimaTions-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AnimaTions-resources.sh"; sourceTree = "<group>"; };
+		6C7FB964662E3A7879FD529BA960CA59 /* LoremIpsum.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LoremIpsum.xcconfig; sourceTree = "<group>"; };
+		7F1F25A2DBBA48241B1F5F6EC6B3DD4F /* Pods-AnimaTions-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AnimaTions-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8821B28BFEF30D4C4E3E975E3E366D05 /* HMSegmentedControl-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HMSegmentedControl-prefix.pch"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A8814057DC0B16C95653D9E13FE9CA36 /* LoremIpsum.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LoremIpsum.h; path = LoremIpsum/LoremIpsum.h; sourceTree = "<group>"; };
+		B7AE9C3077F4E568F117A4FE0664631F /* HMSegmentedControl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HMSegmentedControl.h; path = HMSegmentedControl/HMSegmentedControl.h; sourceTree = "<group>"; };
+		BACC64101FAE4862F8806DB02FC71B0E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		BB37ECDCF9EB1914D02663E6215B90A4 /* Pods-AnimaTions-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AnimaTions-frameworks.sh"; sourceTree = "<group>"; };
+		E0C0E2C23292BCEF3BF991F531AACD05 /* LoremIpsum-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LoremIpsum-dummy.m"; sourceTree = "<group>"; };
+		EA378E1A1F9A441F9D61C33457EC6A9F /* libPods-AnimaTions.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-AnimaTions.a"; path = "libPods-AnimaTions.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1FA5FC9B8E199A02EF12E74CCC50E09 /* Pods-AnimaTions-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AnimaTions-dummy.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2AA5F33F4E2D8F63F9068159CD2D61CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06E7D2E442D29969F491F4E267EB28BA /* Foundation.framework in Frameworks */,
+				A5C58E98A560F8E832748A2B309736A1 /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96568374B15BFCE092DDC1BF2F570953 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0A1F233B3B233D445A29F988BFAB585 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B69A9BC07F1EC43550A18B50CF3FB72 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17C72C8B5D8A45B47B781FC34641AE95 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		083087A28CCD4FE9EB87F46C583498BE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FAC35FBB197EB6B2A0D283C73C65A89A /* HMSegmentedControl */,
+				AB0DB52046711580678C0F17D1E74E8A /* LoremIpsum */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		2AD8A167B89C8191DF495205DEB2B72C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				39248AD05B54DBC55D33F808E7E69504 /* libHMSegmentedControl.a */,
+				20B8CFB12A1DF5B18061D01F90A26D57 /* libLoremIpsum.a */,
+				EA378E1A1F9A441F9D61C33457EC6A9F /* libPods-AnimaTions.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C7AB6F27FF3606F9360547F8F1977A63 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5DA4604EFF5C4F161D2DEC4C68E12977 /* Pods-AnimaTions */ = {
+			isa = PBXGroup;
+			children = (
+				7F1F25A2DBBA48241B1F5F6EC6B3DD4F /* Pods-AnimaTions-acknowledgements.markdown */,
+				22FA752E8AFCAF64CDD0C3AB9E34A499 /* Pods-AnimaTions-acknowledgements.plist */,
+				F1FA5FC9B8E199A02EF12E74CCC50E09 /* Pods-AnimaTions-dummy.m */,
+				BB37ECDCF9EB1914D02663E6215B90A4 /* Pods-AnimaTions-frameworks.sh */,
+				544F2B39432E8F6E406316C691861E1A /* Pods-AnimaTions-resources.sh */,
+				376AC142847F18B2A6EC7443CB30426C /* Pods-AnimaTions.debug.xcconfig */,
+				33127D2149019DF8D341C59E95F62F1F /* Pods-AnimaTions.release.xcconfig */,
+			);
+			name = "Pods-AnimaTions";
+			path = "Target Support Files/Pods-AnimaTions";
+			sourceTree = "<group>";
+		};
+		779DA23BF3C7EE96E52E70C59B3773B1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2AFE7B94E09F859251E6EB5C0E54BAF4 /* HMSegmentedControl.xcconfig */,
+				330D210A959376D7C8A2A1ABA8B56D7C /* HMSegmentedControl-dummy.m */,
+				8821B28BFEF30D4C4E3E975E3E366D05 /* HMSegmentedControl-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/HMSegmentedControl";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				083087A28CCD4FE9EB87F46C583498BE /* Pods */,
+				2AD8A167B89C8191DF495205DEB2B72C /* Products */,
+				C5DE0F103AC6E5E797A96E59B52B7BDC /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		AB0DB52046711580678C0F17D1E74E8A /* LoremIpsum */ = {
+			isa = PBXGroup;
+			children = (
+				A8814057DC0B16C95653D9E13FE9CA36 /* LoremIpsum.h */,
+				3699EB4050D006EA5F4044E587DAA60B /* LoremIpsum.m */,
+				D4EB3E1D3F7BA3C3DF2F4BEEB4B09201 /* Support Files */,
+			);
+			name = LoremIpsum;
+			path = LoremIpsum;
+			sourceTree = "<group>";
+		};
+		C5DE0F103AC6E5E797A96E59B52B7BDC /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5DA4604EFF5C4F161D2DEC4C68E12977 /* Pods-AnimaTions */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		C7AB6F27FF3606F9360547F8F1977A63 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3AC5D9C5B838BE747D0154460D02F926 /* Foundation.framework */,
+				BACC64101FAE4862F8806DB02FC71B0E /* QuartzCore.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		D4EB3E1D3F7BA3C3DF2F4BEEB4B09201 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6C7FB964662E3A7879FD529BA960CA59 /* LoremIpsum.xcconfig */,
+				E0C0E2C23292BCEF3BF991F531AACD05 /* LoremIpsum-dummy.m */,
+				2646685AF28F5468077D33B8F25CE9F6 /* LoremIpsum-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/LoremIpsum";
+			sourceTree = "<group>";
+		};
+		FAC35FBB197EB6B2A0D283C73C65A89A /* HMSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				B7AE9C3077F4E568F117A4FE0664631F /* HMSegmentedControl.h */,
+				27FF7265001B85FC40DFE6D5AD2176B5 /* HMSegmentedControl.m */,
+				779DA23BF3C7EE96E52E70C59B3773B1 /* Support Files */,
+			);
+			name = HMSegmentedControl;
+			path = HMSegmentedControl;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1BBD9F7CEC386A8DE830F56FE4D2BB59 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFC487AF0EF719A47A77BDEB3A8B8FB6 /* HMSegmentedControl.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7DEC81D48367FB177B994813093CABC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DDB28DA286509E18EF2D9B77EB32E0F /* LoremIpsum.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		4787B8AA7B57F812D0780B972F055FD1 /* LoremIpsum */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A590654129DD3259C40D58C7B5CB603 /* Build configuration list for PBXNativeTarget "LoremIpsum" */;
+			buildPhases = (
+				6A63AC0F90DB57264BACAB3F2AD70B09 /* Sources */,
+				9B69A9BC07F1EC43550A18B50CF3FB72 /* Frameworks */,
+				C7DEC81D48367FB177B994813093CABC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LoremIpsum;
+			productName = LoremIpsum;
+			productReference = 20B8CFB12A1DF5B18061D01F90A26D57 /* libLoremIpsum.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		6E66B362AE57238557E51E1B585B5C93 /* HMSegmentedControl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2C2EA64CD5AA31F8FD3779DCAB1EA5B /* Build configuration list for PBXNativeTarget "HMSegmentedControl" */;
+			buildPhases = (
+				12B0937F9BE3BF6804980CD41425D339 /* Sources */,
+				2AA5F33F4E2D8F63F9068159CD2D61CB /* Frameworks */,
+				1BBD9F7CEC386A8DE830F56FE4D2BB59 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HMSegmentedControl;
+			productName = HMSegmentedControl;
+			productReference = 39248AD05B54DBC55D33F808E7E69504 /* libHMSegmentedControl.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		993512EC8601F3BEB29601429B28E934 /* Pods-AnimaTions */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E311EEFDC09C8FE5D1FC7BE6582CE66B /* Build configuration list for PBXNativeTarget "Pods-AnimaTions" */;
+			buildPhases = (
+				6F3F703FD3A10D97747DBA9C9C8AFA8D /* Sources */,
+				96568374B15BFCE092DDC1BF2F570953 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				601253ADA9274BD9A3898358F9022592 /* PBXTargetDependency */,
+				179EE868323DFA7E7A8B26987BA7F90E /* PBXTargetDependency */,
+			);
+			name = "Pods-AnimaTions";
+			productName = "Pods-AnimaTions";
+			productReference = EA378E1A1F9A441F9D61C33457EC6A9F /* libPods-AnimaTions.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 2AD8A167B89C8191DF495205DEB2B72C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6E66B362AE57238557E51E1B585B5C93 /* HMSegmentedControl */,
+				4787B8AA7B57F812D0780B972F055FD1 /* LoremIpsum */,
+				993512EC8601F3BEB29601429B28E934 /* Pods-AnimaTions */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		12B0937F9BE3BF6804980CD41425D339 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDFD18B3FAB1DE3FD2FC2307E4A4F6A3 /* HMSegmentedControl-dummy.m in Sources */,
+				6140FA9151F304FDD10E084CB7A10442 /* HMSegmentedControl.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A63AC0F90DB57264BACAB3F2AD70B09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B0932E6B641F4E97196430F2B20D129 /* LoremIpsum-dummy.m in Sources */,
+				6EE359AF1B748D98A3AFB875CF6C69F1 /* LoremIpsum.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F3F703FD3A10D97747DBA9C9C8AFA8D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFA6B39E92B74C024D3C7C343A17658D /* Pods-AnimaTions-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		179EE868323DFA7E7A8B26987BA7F90E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LoremIpsum;
+			target = 4787B8AA7B57F812D0780B972F055FD1 /* LoremIpsum */;
+			targetProxy = B29E751B4431B231ADA8F9879F52E336 /* PBXContainerItemProxy */;
+		};
+		601253ADA9274BD9A3898358F9022592 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = HMSegmentedControl;
+			target = 6E66B362AE57238557E51E1B585B5C93 /* HMSegmentedControl */;
+			targetProxy = A7CEE4F6C9358E1975498E14D4BF448D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0B029688D6709A4CB39F90CAED5AEB3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AFE7B94E09F859251E6EB5C0E54BAF4 /* HMSegmentedControl.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/HMSegmentedControl/HMSegmentedControl-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		5D3EA8F7A4FBBF87DC8788FE85E539E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 376AC142847F18B2A6EC7443CB30426C /* Pods-AnimaTions.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		673254EEAF0B5BF4596080C749645884 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9C98E38FC24FA3500B590EAD1B1225E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C7FB964662E3A7879FD529BA960CA59 /* LoremIpsum.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/LoremIpsum/LoremIpsum-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CE6CA6674FCABCF529D33758B1499616 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33127D2149019DF8D341C59E95F62F1F /* Pods-AnimaTions.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		D0394A0236A0280E558BABEAA5E24633 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C7FB964662E3A7879FD529BA960CA59 /* LoremIpsum.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/LoremIpsum/LoremIpsum-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		D9EFFB85B6BAED55C96513504D459EB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AFE7B94E09F859251E6EB5C0E54BAF4 /* HMSegmentedControl.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/HMSegmentedControl/HMSegmentedControl-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E4F26E6EB105713A6A7E7E2E283AC2DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4F26E6EB105713A6A7E7E2E283AC2DF /* Debug */,
+				673254EEAF0B5BF4596080C749645884 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A590654129DD3259C40D58C7B5CB603 /* Build configuration list for PBXNativeTarget "LoremIpsum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C98E38FC24FA3500B590EAD1B1225E8 /* Debug */,
+				D0394A0236A0280E558BABEAA5E24633 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A2C2EA64CD5AA31F8FD3779DCAB1EA5B /* Build configuration list for PBXNativeTarget "HMSegmentedControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9EFFB85B6BAED55C96513504D459EB8 /* Debug */,
+				0B029688D6709A4CB39F90CAED5AEB3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E311EEFDC09C8FE5D1FC7BE6582CE66B /* Build configuration list for PBXNativeTarget "Pods-AnimaTions" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D3EA8F7A4FBBF87DC8788FE85E539E9 /* Debug */,
+				CE6CA6674FCABCF529D33758B1499616 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
