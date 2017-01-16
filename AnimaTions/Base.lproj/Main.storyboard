@@ -69,7 +69,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&amp;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yt1-1O-CSw">
-                                                            <rect key="frame" x="160.5" y="2" width="46" height="70"/>
+                                                            <rect key="frame" x="160" y="2" width="46" height="70"/>
                                                             <fontDescription key="fontDescription" name="Marta" family="Marta" pointSize="70"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="0.25136598926380366" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -390,7 +390,7 @@
         <!--Recipe Page View Controller-->
         <scene sceneID="CSt-PV-T2f">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="oqF-vM-dkh" customClass="RecipePageViewController" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="oqF-vM-dkh" customClass="RecipePageViewController" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxD-au-HyT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1633" y="363"/>
@@ -399,7 +399,7 @@
         <scene sceneID="fyH-Lw-J3M">
             <objects>
                 <tableViewController storyboardIdentifier="IngredientsTableViewController" id="tLe-ib-GpC" customClass="IngredientsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WD0-4g-JFa">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WD0-4g-JFa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -408,9 +408,40 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MCB-7b-4fx" id="Ltm-kp-GGm">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WVI-vC-fQb" customClass="dottedView">
+                                            <rect key="frame" x="8" y="0.0" width="359" height="44"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SV8-kp-68Y">
+                                            <rect key="frame" x="32.5" y="15.5" width="34" height="14"/>
+                                            <fontDescription key="fontDescription" name="Marta" family="Marta" pointSize="14"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="•" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrd-sb-nrZ">
+                                            <rect key="frame" x="16" y="9.5" width="8.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="WVI-vC-fQb" firstAttribute="leading" secondItem="Ltm-kp-GGm" secondAttribute="leading" constant="8" id="7N2-yQ-EGb"/>
+                                        <constraint firstAttribute="bottom" secondItem="WVI-vC-fQb" secondAttribute="bottom" id="Hbr-iY-spL"/>
+                                        <constraint firstItem="SV8-kp-68Y" firstAttribute="centerY" secondItem="Ltm-kp-GGm" secondAttribute="centerY" id="KKb-ki-XZz"/>
+                                        <constraint firstAttribute="trailing" secondItem="WVI-vC-fQb" secondAttribute="trailing" constant="8" id="QGC-QH-HYd"/>
+                                        <constraint firstItem="jrd-sb-nrZ" firstAttribute="centerY" secondItem="Ltm-kp-GGm" secondAttribute="centerY" multiplier="0.9" id="WkV-pf-nJ7"/>
+                                        <constraint firstItem="jrd-sb-nrZ" firstAttribute="leading" secondItem="Ltm-kp-GGm" secondAttribute="leading" constant="16" id="bth-KZ-4VC"/>
+                                        <constraint firstItem="SV8-kp-68Y" firstAttribute="leading" secondItem="jrd-sb-nrZ" secondAttribute="trailing" constant="8" id="pSb-YU-Qqm"/>
+                                        <constraint firstItem="WVI-vC-fQb" firstAttribute="top" secondItem="Ltm-kp-GGm" secondAttribute="top" id="xul-Ge-dme"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="ingredientName" destination="SV8-kp-68Y" id="Sad-jH-MZM"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -421,13 +452,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RYB-Th-D3l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2375" y="555"/>
+            <point key="canvasLocation" x="2373.5999999999999" y="554.57271364317842"/>
         </scene>
         <!--Tips Table View Controller-->
         <scene sceneID="knT-s8-vtV">
             <objects>
                 <tableViewController storyboardIdentifier="TipsTableViewController" id="XrK-ot-Q4I" customClass="TipsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="326" sectionHeaderHeight="28" sectionFooterHeight="28" id="N2g-KP-97L">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="326" sectionHeaderHeight="28" sectionFooterHeight="28" id="N2g-KP-97L">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -482,7 +513,7 @@
         <scene sceneID="vUb-3T-TPc">
             <objects>
                 <tableViewController storyboardIdentifier="NutritionTableViewController" id="ZAr-LA-tVm" customClass="NutritionTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TPP-L6-O8G">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TPP-L6-O8G">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -526,13 +557,13 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9y-ZP-BhH">
-                                            <rect key="frame" x="16" y="8" width="34" height="14"/>
+                                            <rect key="frame" x="16" y="8.5" width="34" height="14"/>
                                             <fontDescription key="fontDescription" name="Marta" family="Marta" pointSize="14"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLQ-vq-rHE">
-                                            <rect key="frame" x="325" y="7.5" width="34" height="14"/>
+                                            <rect key="frame" x="325" y="8" width="34" height="14"/>
                                             <fontDescription key="fontDescription" name="Marta" family="Marta" pointSize="14"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>

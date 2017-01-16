@@ -9,7 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface RecipePageViewController : UIPageViewController
-@property (nonatomic, strong) NSDictionary* cellData;
-
-- (void)selectPageAtIndex:(NSInteger)index;
 @end

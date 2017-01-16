@@ -52,7 +52,7 @@
 
 + (NSArray*)randomIngredients{
 	NSMutableArray* ingredients = [NSMutableArray new];
-	int random = (arc4random() % 10) + 1;
+	int random = (arc4random() % 10) + 5;
 	for (NSInteger i = 0; i < random; i++) {
 		[ingredients addObject:[self randomIngredient]];
 	}

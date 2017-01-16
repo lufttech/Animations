@@ -33,81 +33,118 @@
 	
 	UIViewController <TransitionAnimatorProtocol>*fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
 	UIViewController <TransitionAnimatorProtocol>*toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+	CGFloat duration;
+	
 	
 	if (_presenting) {
-		[self presentingTransition:transitionContext from:fromViewController to:toViewController];
+		duration = kTransitionAnimationDuration;
+		fromViewController.view.userInteractionEnabled = NO;
+		toViewController.view.alpha = 0;
+		[transitionContext.containerView addSubview:toViewController.view];
 	}else{
-		[self dissmissingTransition:transitionContext from:fromViewController to:toViewController];
-	}
-}
-
-- (void)presentingTransition:(id<UIViewControllerContextTransitioning>)transitionContext
-						from:(UIViewController <TransitionAnimatorProtocol>*)fromVC
-						  to:(UIViewController <TransitionAnimatorProtocol>*)toVC
-{
-	
-	fromVC.view.userInteractionEnabled = NO;
-	
-	toVC.view.alpha = 0;
-	[transitionContext.containerView addSubview:toVC.view];
-	
-	if ([fromVC respondsToSelector:@selector(prepareAnimatedViewsForPresentingViewController:)]) {
-		[fromVC prepareAnimatedViewsForPresentingViewController:NO];
-	}
-	if ([toVC respondsToSelector:@selector(prepareAnimatedViewsForPresentingViewController:)]) {
-		[toVC prepareAnimatedViewsForPresentingViewController:YES];
+		duration = kDissmissTransitionAnimationDuration;
+		toViewController.view.userInteractionEnabled = YES;
 	}
 	
-	[UIView animateWithDuration:kTransitionAnimationDuration animations:^{
-		toVC.view.alpha = 1;
-		if ([fromVC respondsToSelector:@selector(animateViewsForPresentingViewController:)]) {
-			[fromVC animateViewsForPresentingViewController:NO];
+	toViewController.view.userInteractionEnabled = YES;
+	
+	if ([fromViewController respondsToSelector:@selector(prepareAnimatedViewsForPresentingViewController:)]) {
+		[fromViewController prepareAnimatedViewsForPresentingViewController:NO];
+	}
+	if ([toViewController respondsToSelector:@selector(prepareAnimatedViewsForPresentingViewController:)]) {
+		[toViewController prepareAnimatedViewsForPresentingViewController:YES];
+	}
+	
+	[UIView animateWithDuration:duration animations:^{
+		if (_presenting) {
+			toViewController.view.alpha = 1;
+		}else{
+			fromViewController.view.alpha = 0;
 		}
-		if ([toVC respondsToSelector:@selector(animateViewsForPresentingViewController:)]) {
-			[toVC animateViewsForPresentingViewController:YES];
+		if ([fromViewController respondsToSelector:@selector(animateViewsForPresentingViewController:)]) {
+			[fromViewController animateViewsForPresentingViewController:NO];
+		}
+		if ([toViewController respondsToSelector:@selector(animateViewsForPresentingViewController:)]) {
+			[toViewController animateViewsForPresentingViewController:YES];
 		}
 	} completion:^(BOOL finished) {
-		if ([fromVC respondsToSelector:@selector(completionAnimateViewsForPresentingViewController:)]) {
-			[fromVC completionAnimateViewsForPresentingViewController:NO];
+		if ([fromViewController respondsToSelector:@selector(completionAnimateViewsForPresentingViewController:)]) {
+			[fromViewController completionAnimateViewsForPresentingViewController:NO];
 		}
-		if ([toVC respondsToSelector:@selector(completionAnimateViewsForPresentingViewController:)]) {
-			[toVC completionAnimateViewsForPresentingViewController:YES];
+		if ([toViewController respondsToSelector:@selector(completionAnimateViewsForPresentingViewController:)]) {
+			[toViewController completionAnimateViewsForPresentingViewController:YES];
 		}
 		[transitionContext completeTransition:YES];
 	}];
 }
-- (void)dissmissingTransition:(id<UIViewControllerContextTransitioning>)transitionContext
-						 from:(UIViewController <TransitionAnimatorProtocol>*)fromVC
-						   to:(UIViewController <TransitionAnimatorProtocol>*)toVC
-{
-	
-	
-	toVC.view.userInteractionEnabled = YES;
-	
-	if ([fromVC respondsToSelector:@selector(prepareAnimatedViewsForPresentingViewController:)]) {
-		[fromVC prepareAnimatedViewsForPresentingViewController:NO];
-	}
-	if ([toVC respondsToSelector:@selector(prepareAnimatedViewsForPresentingViewController:)]) {
-		[toVC prepareAnimatedViewsForPresentingViewController:YES];
-	}
-	
-	[UIView animateWithDuration:kDissmissTransitionAnimationDuration animations:^{
-		fromVC.view.alpha = 0;
-		if ([fromVC respondsToSelector:@selector(animateViewsForPresentingViewController:)]) {
-			[fromVC animateViewsForPresentingViewController:NO];
-		}
-		if ([toVC respondsToSelector:@selector(animateViewsForPresentingViewController:)]) {
-			[toVC animateViewsForPresentingViewController:YES];
-		}
-	} completion:^(BOOL finished) {
-		if ([fromVC respondsToSelector:@selector(completionAnimateViewsForPresentingViewController:)]) {
-			[fromVC completionAnimateViewsForPresentingViewController:NO];
-		}
-		if ([toVC respondsToSelector:@selector(completionAnimateViewsForPresentingViewController:)]) {
-			[toVC completionAnimateViewsForPresentingViewController:YES];
-		}
-		[transitionContext completeTransition:YES];
-	}];
-}
+//
+//- (void)presentingTransition:(id<UIViewControllerContextTransitioning>)transitionContext
+//						from:(UIViewController <TransitionAnimatorProtocol>*)fromVC
+//						  to:(UIViewController <TransitionAnimatorProtocol>*)toVC
+//{
+//	
+//	fromVC.view.userInteractionEnabled = NO;
+//	
+//	toVC.view.alpha = 0;
+//	[transitionContext.containerView addSubview:toVC.view];
+//	
+//	if ([fromVC respondsToSelector:@selector(prepareAnimatedViewsForPresentingViewController:)]) {
+//		[fromVC prepareAnimatedViewsForPresentingViewController:NO];
+//	}
+//	if ([toVC respondsToSelector:@selector(prepareAnimatedViewsForPresentingViewController:)]) {
+//		[toVC prepareAnimatedViewsForPresentingViewController:YES];
+//	}
+//	
+//	[UIView animateWithDuration:kTransitionAnimationDuration animations:^{
+//		toVC.view.alpha = 1;
+//		if ([fromVC respondsToSelector:@selector(animateViewsForPresentingViewController:)]) {
+//			[fromVC animateViewsForPresentingViewController:NO];
+//		}
+//		if ([toVC respondsToSelector:@selector(animateViewsForPresentingViewController:)]) {
+//			[toVC animateViewsForPresentingViewController:YES];
+//		}
+//	} completion:^(BOOL finished) {
+//		if ([fromVC respondsToSelector:@selector(completionAnimateViewsForPresentingViewController:)]) {
+//			[fromVC completionAnimateViewsForPresentingViewController:NO];
+//		}
+//		if ([toVC respondsToSelector:@selector(completionAnimateViewsForPresentingViewController:)]) {
+//			[toVC completionAnimateViewsForPresentingViewController:YES];
+//		}
+//		[transitionContext completeTransition:YES];
+//	}];
+//}
+//- (void)dissmissingTransition:(id<UIViewControllerContextTransitioning>)transitionContext
+//						 from:(UIViewController <TransitionAnimatorProtocol>*)fromVC
+//						   to:(UIViewController <TransitionAnimatorProtocol>*)toVC
+//{
+//	
+//	
+//	toVC.view.userInteractionEnabled = YES;
+//	
+//	if ([fromVC respondsToSelector:@selector(prepareAnimatedViewsForPresentingViewController:)]) {
+//		[fromVC prepareAnimatedViewsForPresentingViewController:NO];
+//	}
+//	if ([toVC respondsToSelector:@selector(prepareAnimatedViewsForPresentingViewController:)]) {
+//		[toVC prepareAnimatedViewsForPresentingViewController:YES];
+//	}
+//	
+//	[UIView animateWithDuration:kDissmissTransitionAnimationDuration animations:^{
+//		fromVC.view.alpha = 0;
+//		if ([fromVC respondsToSelector:@selector(animateViewsForPresentingViewController:)]) {
+//			[fromVC animateViewsForPresentingViewController:NO];
+//		}
+//		if ([toVC respondsToSelector:@selector(animateViewsForPresentingViewController:)]) {
+//			[toVC animateViewsForPresentingViewController:YES];
+//		}
+//	} completion:^(BOOL finished) {
+//		if ([fromVC respondsToSelector:@selector(completionAnimateViewsForPresentingViewController:)]) {
+//			[fromVC completionAnimateViewsForPresentingViewController:NO];
+//		}
+//		if ([toVC respondsToSelector:@selector(completionAnimateViewsForPresentingViewController:)]) {
+//			[toVC completionAnimateViewsForPresentingViewController:YES];
+//		}
+//		[transitionContext completeTransition:YES];
+//	}];
+//}
 
 @end

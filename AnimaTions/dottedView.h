@@ -1,5 +1,5 @@
 //
-//  IngredientCell.h
+//  dottedView.h
 //  AnimaTions
 //
 //  Created by Artem Shvets on 13.01.17.
@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IngredientCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *ingredientName;
+@interface dottedView : UIView
 
 @end
