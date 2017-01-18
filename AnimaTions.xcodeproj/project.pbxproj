@@ -27,6 +27,7 @@
 		D2889F871E13FD6100E36ECF /* Marta_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2889F841E13FD6100E36ECF /* Marta_Bold.otf */; };
 		D2889F881E13FD6100E36ECF /* Marta_Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2889F851E13FD6100E36ECF /* Marta_Italic.otf */; };
 		D2889F891E13FD6100E36ECF /* Marta_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2889F861E13FD6100E36ECF /* Marta_Regular.otf */; };
+		D2A101001E2F826A00626248 /* ASSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A100FF1E2F826A00626248 /* ASSegmentControl.m */; };
 		D2B547D41E1FE97400859CE0 /* DetailRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B547D31E1FE97400859CE0 /* DetailRecipeViewController.m */; };
 		D2C7D31C1E1D13F90017F18C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C7D31B1E1D13F90017F18C /* CoreGraphics.framework */; };
 		D2C7D31E1E1D14030017F18C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C7D31D1E1D14030017F18C /* QuartzCore.framework */; };
@@ -88,6 +89,8 @@
 		D2889F841E13FD6100E36ECF /* Marta_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Marta_Bold.otf; sourceTree = "<group>"; };
 		D2889F851E13FD6100E36ECF /* Marta_Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Marta_Italic.otf; sourceTree = "<group>"; };
 		D2889F861E13FD6100E36ECF /* Marta_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Marta_Regular.otf; sourceTree = "<group>"; };
+		D2A100FE1E2F826A00626248 /* ASSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSegmentControl.h; sourceTree = "<group>"; };
+		D2A100FF1E2F826A00626248 /* ASSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSegmentControl.m; sourceTree = "<group>"; };
 		D2B547D21E1FE97400859CE0 /* DetailRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailRecipeViewController.h; sourceTree = "<group>"; };
 		D2B547D31E1FE97400859CE0 /* DetailRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailRecipeViewController.m; sourceTree = "<group>"; };
 		D2C7D31B1E1D13F90017F18C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -251,6 +254,8 @@
 				D2FE8C471E27CA8D00D2EC21 /* UIScrollView+App.m */,
 				D27E6F811E2927A200F21135 /* dottedView.h */,
 				D27E6F821E2927A200F21135 /* dottedView.m */,
+				D2A100FE1E2F826A00626248 /* ASSegmentControl.h */,
+				D2A100FF1E2F826A00626248 /* ASSegmentControl.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -344,7 +349,7 @@
 				TargetAttributes = {
 					D2889F4D1E13C28800E36ECF = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 6NLG5S887D;
+						DevelopmentTeam = 76BQSTQDWZ;
 						ProvisioningStyle = Automatic;
 					};
 					D2889F661E13C28800E36ECF = {
@@ -467,6 +472,7 @@
 				D2B547D41E1FE97400859CE0 /* DetailRecipeViewController.m in Sources */,
 				D27E6F831E2927A200F21135 /* dottedView.m in Sources */,
 				D2FE8C581E28181800D2EC21 /* NutritionTableViewController.m in Sources */,
+				D2A101001E2F826A00626248 /* ASSegmentControl.m in Sources */,
 				D2FE8C521E2817FF00D2EC21 /* IngredientsTableViewController.m in Sources */,
 				D27E6F791E28F9E800F21135 /* IngredientCell.m in Sources */,
 				D2FE8C551E28180D00D2EC21 /* TipsTableViewController.m in Sources */,
@@ -605,7 +611,7 @@
 			baseConfigurationReference = 082CFF65E4BCB1BCDE042E1A /* Pods-AnimaTions.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6NLG5S887D;
+				DEVELOPMENT_TEAM = 76BQSTQDWZ;
 				INFOPLIST_FILE = AnimaTions/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FF.AnimaTions;
@@ -618,7 +624,7 @@
 			baseConfigurationReference = 79F4AE51FD046E5FDFB32121 /* Pods-AnimaTions.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6NLG5S887D;
+				DEVELOPMENT_TEAM = 76BQSTQDWZ;
 				INFOPLIST_FILE = AnimaTions/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FF.AnimaTions;

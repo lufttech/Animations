@@ -11,16 +11,16 @@
 #import "DetailRecipeViewController.h"
 #import <CoreText/CoreText.h>
 #import "UIScrollView+App.h"
-#import <HMSegmentedControl/HMSegmentedControl.h>
 #import "UIViewController+Configurator.h"
 #import "RecipePageViewController.h"
 #import "RecipePageViewController.h"
 #import "IngredientsTableViewController.h"
 #import "TipsTableViewController.h"
+#import "ASSegmentControl.h"
 
 
 
-@interface DetailRecipeViewController ()<TransitionAnimatorProtocol, UIScrollViewDelegate, UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface DetailRecipeViewController ()<TransitionAnimatorProtocol, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *recTitle;
@@ -35,37 +35,31 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel *cookingTime;
 @property (weak, nonatomic) IBOutlet UIView *segmentContainer;
-@property (strong, nonatomic) HMSegmentedControl* segmentedControl;
-@property (weak, nonatomic) RecipePageViewController* recipePageVC;
+@property (weak, nonatomic) IBOutlet ASSegmentControl *segmentControl;
 
 @property (nonatomic, strong) IngredientsTableViewController *ingredientsViewController;
 @property (nonatomic, strong) TipsTableViewController *tipsViewController;
 @property (nonatomic, strong) NutritionTableViewController *nutritionViewController;
 @property (nonatomic, strong) NSArray *controllersStack;
 @property (nonatomic, strong) NSArray *titles;
+
+
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *containers;
+@property (weak, nonatomic) IBOutlet UIScrollView *containersScrollView;
+
 @end
+
+
+#define kLeftInset 100.0f
 
 @implementation DetailRecipeViewController
 {
 	NSInteger _page;
 	NSInteger _currentPage;
+	CGFloat _pageLayerStartPosition;
+	CGFloat _lastContentOffset;
 }
 
-- (NSArray *)controllersStack {
-	if (_controllersStack == nil) {
-		_controllersStack = @[self.ingredientsViewController,
-							  self.tipsViewController,
-							  self.nutritionViewController];
-	}
-	return _controllersStack;
-}
-
-- (NSArray *)titles {
-	if (_titles == nil) {
-		_titles = @[@"INGREDIENTS", @"TIPS", @"NUTRITION"];
-	}
-	return _titles;
-}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -96,23 +90,10 @@
 	self.scrollView.delegate = (UIViewController <UIScrollViewDelegate>*)self.presentingViewController;
 	self.scrollView.delaysContentTouches = YES;
 	self.scrollView.canCancelContentTouches = NO;
-	//self.scrollView.panGestureRecognizer.delaysTouchesBegan = YES;
-	self.recipePageVC = [self.childViewControllers firstObject];
-	self.recipePageVC.dataSource = self;
-	self.recipePageVC.delegate = self;
-	[self.recipePageVC setViewControllers:@[self.ingredientsViewController] direction:UIPageViewControllerNavigationDirectionForward
-					animated:NO completion:^(BOOL finished) {}];
 	
-	for (UIView *view in self.recipePageVC.view.subviews) {
-		if ([view isKindOfClass:[UIScrollView class]]) {
-			[(UIScrollView *)view setDelegate:self];
-		}
-	}
-	//[self.recipePageVC setCellData:self.cellData];
-	[self addSubview:self.segmentedControl toView:self.segmentContainer];
-	
+	[self.segmentControl setSectionTitles:@[@"INGREDIENTS", @"TIPS", @"NUTRITION"]];
+	[self.segmentControl setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Marta" size:14.0f]}];
 	[self setupData];
-    // Do any additional setup after loading the view.
 }
 -(BOOL)prefersStatusBarHidden{
 	return YES;
@@ -124,59 +105,21 @@
 	self.recipeLabel.text = self.cellData[@"recipe"];
 	self.cookingTime.text = self.cellData[@"cookingTime"];
 	[self.imageView setImage:[UIImage imageNamed:self.cellData[@"image"]]];
+	
+	NSArray* children = self.childViewControllers;
+	self.ingredientsViewController = children[0];
+	self.ingredientsViewController.cellData = _cellData[@"ingredients"];
+	self.tipsViewController = children[1];
+	self.tipsViewController.cellData = _cellData[@"tips"];
+	self.nutritionViewController = children[2];
+	self.nutritionViewController.cellData = _cellData[@"nutrition"];
+	
+	_pageLayerStartPosition = self.nutritionViewController.view.layer.position.x;
 }
 
 #pragma mark - Getters
-- (IngredientsTableViewController *)ingredientsViewController
-{
-	if (!_ingredientsViewController) {
-		_ingredientsViewController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([IngredientsTableViewController class])];
-		_ingredientsViewController.cellData = _cellData[@"ingredients"];
-	}
-	return _ingredientsViewController;
-}
-- (TipsTableViewController *)tipsViewController
-{
-	if (!_tipsViewController) {
-		_tipsViewController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([TipsTableViewController class])];
-		_tipsViewController.cellData = _cellData[@"tips"];
-	}
-	return _tipsViewController;
-}
-- (NutritionTableViewController *)nutritionViewController
-{
-	if (!_nutritionViewController) {
-		_nutritionViewController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([NutritionTableViewController class])];
-		_nutritionViewController.cellData = _cellData[@"nutrition"];
-	}
-	return _nutritionViewController;
-}
 
-- (HMSegmentedControl *)segmentedControl
-{
-	if (!_segmentedControl) {
-		_segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"INGREDIENTS", @"TIPS", @"NUTRITION"]];
 
-		_segmentedControl.type = HMSegmentedControlTypeText;
-		_segmentedControl.borderType = HMSegmentedControlBorderTypeBottom;
-		_segmentedControl.borderColor = [UIColor colorWithRed:246.0f/255.f green:246.0f/255.f blue:246.0f/255.f alpha:1];
-		_segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
-		_segmentedControl.backgroundColor = [UIColor whiteColor];
-		_segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
-		_segmentedControl.shouldAnimateUserSelection = YES;
-		_segmentedControl.selectionIndicatorHeight = 1.5f;
-		_segmentedControl.selectionIndicatorColor = [UIColor blackColor];
-		
-		
-		NSDictionary* attributes = @{NSForegroundColorAttributeName : [UIColor darkGrayColor], NSFontAttributeName : [UIFont fontWithName:@"Marta" size:12.f]};
-		_segmentedControl.titleTextAttributes = attributes;
-		_segmentedControl.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44);
-		//[_segmentedControl buildAppHMSegmentController];
-		[_segmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-		[_segmentedControl setSelectedSegmentIndex:0];
-	}
-	return _segmentedControl;
-}
 
 #pragma mark - Transition Animation Delegate
 
@@ -194,7 +137,6 @@
 		self.cookingViewConstraint.constant = 30;
 		self.recipeLabel.alpha = 0.f;
 		self.recipeLabel.transform = CGAffineTransformMakeScale(0.9, 0.9);
-		//self.titleTopConstraint.constant += kTopOffset;
 	}else{
 		self.upConstaint.constant = 0;
 	}
@@ -209,9 +151,6 @@
 		self.midView.transform = CGAffineTransformMakeScale(1.5f , 1.5f);
 		self.recipeLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
 	}else{
-//		if (self.scrollView.contentOffset.y < self.imageView.frame.size.height) {
-//			self.imageView.hidden = YES;
-//		}
 		[self.scrollView setScrollsToTop:NO];
 	}
 	
@@ -220,86 +159,137 @@
 {
 	
 }
-#pragma mark - Page Controller Delegate
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-	NSInteger index = [self.controllersStack indexOfObject:viewController];
-	if (index != 0) {
-		UIViewController* beforeVC = self.controllersStack[index - 1];
-		//beforeVC.view.alpha = 1;
-		return beforeVC;
+#pragma mark - Scroll View Delegate
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+	*targetContentOffset = scrollView.contentOffset;
+	float pageWidth = (float)self.scrollView.bounds.size.width - kLeftInset;
+	
+	long roundedCellToSwipe = lroundf(scrollView.contentOffset.x / pageWidth);
+	
+	
+	if (roundedCellToSwipe <= self.childViewControllers.count - 1) {
+		CGFloat different = (float)roundedCellToSwipe - (scrollView.contentOffset.x / pageWidth);
+		
+		NSInteger skipedIndex = roundedCellToSwipe - _currentPage;
+		
+		if(different > 0) skipedIndex --;
+		if(different <= 0) skipedIndex ++;
+		
+		NSLog(@"RoundedCellToSwipe: %f\n",different);
+		
+		if ((different > 0.15f) && (different < 0.45f)) {
+			roundedCellToSwipe -= labs(skipedIndex);
+		}else if((different < -0.15f) && (different > -0.45f)){
+			roundedCellToSwipe += labs(skipedIndex);
+		}
+		
+		if (roundedCellToSwipe < 0) {
+			roundedCellToSwipe = 0.f;
+		} else if (roundedCellToSwipe >= self.childViewControllers.count - 1) {
+			roundedCellToSwipe = (float)self.childViewControllers.count - 1;
+		}
+		
+		NSInteger prevPage = _currentPage;
+		_currentPage = roundedCellToSwipe;
+		if(_currentPage != prevPage) [self.segmentControl setSelectedSegmentIndex:_currentPage animated:YES notify:NO];
+		
+		[scrollView scrollRectToVisible:CGRectMake(roundedCellToSwipe* scrollView.frame.size.width - kLeftInset, 0, scrollView.frame.size.width, scrollView.frame.size.height) animated:YES];
+		[self.containers enumerateObjectsUsingBlock:^(UIView* view, NSUInteger idx, BOOL * _Nonnull stop) {
+			[UIView animateWithDuration:0.15 animations:^{
+				if (idx != _currentPage) view.alpha = 0;
+				else view.alpha = 1;
+			}];
+			
+		}];
 	}
-	
-	return nil;
-}
-
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-	NSInteger index = [self.controllersStack indexOfObject:viewController];
-	if (index + 1 < self.controllersStack.count) {
-		UIViewController* afterVC = self.controllersStack[index + 1];
-		//afterVC.view.alpha = 1;
-		return afterVC;
-	}
-	return nil;
-}
-
-- (void)pageViewController:(UIPageViewController *)pageViewController
-		didFinishAnimating:(BOOL)finished
-   previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers
-	   transitionCompleted:(BOOL)completed {
-	
-	NSArray *controllers = pageViewController.viewControllers;
-	UIViewController *curController = controllers.lastObject;
-	
-	UIViewController* previousVC = previousViewControllers.firstObject;
-	previousVC.view.alpha = 1;
-	
-	NSInteger index = [self.controllersStack indexOfObject:curController];
-	//_pageControl.currentPage = index;
-	[_segmentedControl setSelectedSegmentIndex:index];
-   // self.navigationItem.title = self.titles[index];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-//	NSLog(@"Content Offset: %f", scrollView.contentOffset.x);
-//	UIViewController* vc = [self.recipePageVC.viewControllers firstObject];
-//	[vc.view.layer setPosition:CGPointMake( scrollView.contentOffset.x * 0.5, vc.view.layer.position.y)];
-//	double delta = scrollView.contentOffset.x / vc.view.frame.size.width;
-//	if (delta > 1.0f) {
-//		delta = 2 - delta;
-//	}
-//	vc.view.alpha = delta;
+	float width = (float)scrollView.bounds.size.width - kLeftInset;
+	CGFloat different = scrollView.contentOffset.x / width;
+	BOOL isFromLeftToRight;
+	if (_lastContentOffset > scrollView.contentOffset.x)
+		isFromLeftToRight = NO;
+	else if (_lastContentOffset < scrollView.contentOffset.x)
+		isFromLeftToRight = YES;
 	
-}
-#pragma mark - Actions
-- (void)segmentedControlChangedValue:(HMSegmentedControl*)control
-{
-	UIViewController* selectedViewController;
+	_lastContentOffset = scrollView.contentOffset.x;
 	
-	switch (control.selectedSegmentIndex) {
-		case 0:
-		{
-		selectedViewController = self.ingredientsViewController;
-		}
-			break;
-		case 1:
-		{
-		selectedViewController = self.tipsViewController;
-		}
-			break;
-		case 2:
-		{
-		selectedViewController = self.nutritionViewController;
-		}
-			break;
-			
-  default:
-			break;
+	
+	if (!isFromLeftToRight) {
+		NSInteger prevPage = _currentPage - 1;
+		
+		UIView* view = [self viewAtIndex:_currentPage];
+		UIView* prevView = [self viewAtIndex:prevPage];
+		
+		[view setAlpha:different - prevPage];
+		
+		[prevView setAlpha:1 - view.alpha];
+		NSLog(@"\nViewAlpha: %f \nPreViewAlpha: %f\n",view.alpha, prevView.alpha);
+	}else{
+		NSInteger nextPage = _currentPage + 1;
+		
+		UIView* view = [self viewAtIndex:_currentPage];
+		UIView* nextView = [self viewAtIndex:nextPage];
+		
+		[nextView setAlpha:different - _currentPage];
+		[view setAlpha:1 - nextView.alpha];
+		
 	}
-	[self.recipePageVC setViewControllers:@[selectedViewController] direction:UIPageViewControllerNavigationDirectionForward
-					animated:NO completion:^(BOOL finished) {}];
+	
 }
+
+- (UIView*)viewAtIndex:(NSInteger)index
+{
+	if (index >= 0 && index < self.childViewControllers.count) {
+		return self.containers[index];
+	}
+	return nil;
+}
+
+#pragma mark - Actions
+//- (void)segmentedControlChangedValue:(HMSegmentedControl*)control
+- (IBAction)segmentControlChangedValue:(ASSegmentControl*)sender {
+	_currentPage = sender.selectedSegmentIndex;
+	float pageWidth = (float)self.containersScrollView.bounds.size.width - kLeftInset;
+	
+	//long roundedCellToSwipe = lroundf(self.containersScrollView.contentOffset.x / pageWidth);
+	[self.containersScrollView scrollRectToVisible:CGRectMake(_currentPage * self.containersScrollView.frame.size.width - kLeftInset, 0, self.containersScrollView.frame.size.width, self.containersScrollView.frame.size.height) animated:YES];
+	[self.containers enumerateObjectsUsingBlock:^(UIView* view, NSUInteger idx, BOOL * _Nonnull stop) {
+		[UIView animateWithDuration:0.3 animations:^{
+			if (idx != _currentPage) view.alpha = 0;
+			else view.alpha = 1;
+		}];
+		
+	}];
+}
+//{
+//	UIViewController* selectedViewController;
+//	
+////	switch (control.selectedSegmentIndex) {
+////		case 0:
+////		{
+////		selectedViewController = self.ingredientsViewController;
+////		}
+////			break;
+////		case 1:
+////		{
+////		selectedViewController = self.tipsViewController;
+////		}
+////			break;
+////		case 2:
+////		{
+////		selectedViewController = self.nutritionViewController;
+////		}
+////			break;
+////			
+////  default:
+////			break;
+////	}
+//}
 - (IBAction)backAction:(id)sender {
 	[self.scrollView stop];
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:nil];

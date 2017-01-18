@@ -125,12 +125,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 										atScrollPosition:UICollectionViewScrollPositionTop
 												animated:YES];
 		}
-		
-
-		
-		
 	}
-	
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {

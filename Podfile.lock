@@ -1,15 +1,12 @@
 PODS:
-  - HMSegmentedControl (1.5.3)
   - LoremIpsum (1.0.0)
 
 DEPENDENCIES:
-  - HMSegmentedControl
   - LoremIpsum (~> 1.0)
 
 SPEC CHECKSUMS:
-  HMSegmentedControl: 7c6145afb50f26cec5f3243082f6f12b9f41318f
   LoremIpsum: 9029c55d36501b2ee0b05cc9ecda11d3a0479160
 
-PODFILE CHECKSUM: 287a8b7c37b03a704943591bf725fea708bc8c43
+PODFILE CHECKSUM: cc0ad88d73b7e79d5181c63ed8504f79dac8453a
 
 COCOAPODS: 1.2.0.beta.1
