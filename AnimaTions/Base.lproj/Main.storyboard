@@ -43,7 +43,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecipeCell" id="sEc-s9-Rz7" customClass="RecipeCell">
-                                        <rect key="frame" x="5" y="0.0" width="366" height="438"/>
+                                        <rect key="frame" x="4.5" y="0.0" width="366" height="438"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="366" height="438"/>
@@ -69,7 +69,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&amp;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yt1-1O-CSw">
-                                                            <rect key="frame" x="160.5" y="2" width="46" height="70"/>
+                                                            <rect key="frame" x="160" y="2" width="46" height="70"/>
                                                             <fontDescription key="fontDescription" name="Marta" family="Marta" pointSize="70"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="0.25136598926380366" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -209,7 +209,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&amp;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFu-zt-TZB">
-                                                        <rect key="frame" x="164.5" y="2" width="46" height="70"/>
+                                                        <rect key="frame" x="165" y="2" width="46" height="70"/>
                                                         <fontDescription key="fontDescription" name="Marta" family="Marta" pointSize="70"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="0.25136598929999998" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -324,14 +324,14 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGX-aM-Ikq">
-                                                        <rect key="frame" x="161.5" y="26.5" width="21" height="20"/>
+                                                        <rect key="frame" x="161.5" y="26" width="21" height="20"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="Marta" family="Marta" pointSize="20"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAD-iN-iyb">
-                                                        <rect key="frame" x="161" y="43.5" width="21" height="10"/>
+                                                        <rect key="frame" x="161" y="43" width="21" height="10"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="Marta" family="Marta" pointSize="10"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -462,13 +462,13 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SV8-kp-68Y">
-                                            <rect key="frame" x="32.5" y="15.5" width="34" height="14"/>
+                                            <rect key="frame" x="33" y="15" width="34" height="14"/>
                                             <fontDescription key="fontDescription" name="Marta" family="Marta" pointSize="14"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="•" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrd-sb-nrZ">
-                                            <rect key="frame" x="16" y="9.5" width="8.5" height="21"/>
+                                            <rect key="frame" x="16" y="10" width="9" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -517,13 +517,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1P-HD-WxH">
-                                            <rect key="frame" x="16" y="16" width="311" height="127.5"/>
+                                            <rect key="frame" x="16" y="16" width="311" height="128"/>
                                             <fontDescription key="fontDescription" name="Marta" family="Marta" pointSize="14"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bLv-QA-mR2">
-                                            <rect key="frame" x="16" y="159.5" width="311" height="150"/>
+                                            <rect key="frame" x="16" y="160" width="311" height="150"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="150" id="CA4-1y-ejO"/>
                                             </constraints>
@@ -603,7 +603,7 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9y-ZP-BhH">
-                                            <rect key="frame" x="16" y="8.5" width="34" height="14"/>
+                                            <rect key="frame" x="16" y="8" width="34" height="14"/>
                                             <fontDescription key="fontDescription" name="Marta" family="Marta" pointSize="14"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>

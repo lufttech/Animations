@@ -28,6 +28,7 @@
 		D2889F881E13FD6100E36ECF /* Marta_Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2889F851E13FD6100E36ECF /* Marta_Italic.otf */; };
 		D2889F891E13FD6100E36ECF /* Marta_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2889F861E13FD6100E36ECF /* Marta_Regular.otf */; };
 		D2A101001E2F826A00626248 /* ASSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A100FF1E2F826A00626248 /* ASSegmentControl.m */; };
+		D2A94DDC1E3106AF004F7561 /* UIView+Bluring.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A94DDB1E3106AF004F7561 /* UIView+Bluring.m */; };
 		D2B547D41E1FE97400859CE0 /* DetailRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B547D31E1FE97400859CE0 /* DetailRecipeViewController.m */; };
 		D2C7D31C1E1D13F90017F18C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C7D31B1E1D13F90017F18C /* CoreGraphics.framework */; };
 		D2C7D31E1E1D14030017F18C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C7D31D1E1D14030017F18C /* QuartzCore.framework */; };
@@ -91,6 +92,8 @@
 		D2889F861E13FD6100E36ECF /* Marta_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Marta_Regular.otf; sourceTree = "<group>"; };
 		D2A100FE1E2F826A00626248 /* ASSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSegmentControl.h; sourceTree = "<group>"; };
 		D2A100FF1E2F826A00626248 /* ASSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSegmentControl.m; sourceTree = "<group>"; };
+		D2A94DDA1E3106AF004F7561 /* UIView+Bluring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Bluring.h"; sourceTree = "<group>"; };
+		D2A94DDB1E3106AF004F7561 /* UIView+Bluring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Bluring.m"; sourceTree = "<group>"; };
 		D2B547D21E1FE97400859CE0 /* DetailRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailRecipeViewController.h; sourceTree = "<group>"; };
 		D2B547D31E1FE97400859CE0 /* DetailRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailRecipeViewController.m; sourceTree = "<group>"; };
 		D2C7D31B1E1D13F90017F18C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -184,8 +187,6 @@
 				D2889F621E13C28800E36ECF /* Info.plist */,
 				D2889F511E13C28800E36ECF /* Supporting Files */,
 				D2889F791E13E8BC00E36ECF /* Recipes.plist */,
-				D20C10271E264BA100E91785 /* UIViewController+Transition.h */,
-				D20C10281E264BA100E91785 /* UIViewController+Transition.m */,
 			);
 			path = AnimaTions;
 			sourceTree = "<group>";
@@ -248,6 +249,10 @@
 		D2E32CDA1E25494200E5FC6E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D20C10271E264BA100E91785 /* UIViewController+Transition.h */,
+				D20C10281E264BA100E91785 /* UIViewController+Transition.m */,
+				D2A94DDA1E3106AF004F7561 /* UIView+Bluring.h */,
+				D2A94DDB1E3106AF004F7561 /* UIView+Bluring.m */,
 				D2E32CDF1E254DDB00E5FC6E /* Animation */,
 				D2E32CDB1E25495F00E5FC6E /* cells */,
 				D2FE8C461E27CA8D00D2EC21 /* UIScrollView+App.h */,
@@ -349,7 +354,7 @@
 				TargetAttributes = {
 					D2889F4D1E13C28800E36ECF = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 76BQSTQDWZ;
+						DevelopmentTeam = 6NLG5S887D;
 						ProvisioningStyle = Automatic;
 					};
 					D2889F661E13C28800E36ECF = {
@@ -457,6 +462,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2FE8C481E27CA8D00D2EC21 /* UIScrollView+App.m in Sources */,
+				D2A94DDC1E3106AF004F7561 /* UIView+Bluring.m in Sources */,
 				D2889F591E13C28800E36ECF /* ViewController.m in Sources */,
 				D20C10291E264BA100E91785 /* UIViewController+Transition.m in Sources */,
 				D2E32CE51E254E2E00E5FC6E /* TransitionAnimator.m in Sources */,
@@ -611,7 +617,7 @@
 			baseConfigurationReference = 082CFF65E4BCB1BCDE042E1A /* Pods-AnimaTions.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 76BQSTQDWZ;
+				DEVELOPMENT_TEAM = 6NLG5S887D;
 				INFOPLIST_FILE = AnimaTions/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FF.AnimaTions;
@@ -624,7 +630,7 @@
 			baseConfigurationReference = 79F4AE51FD046E5FDFB32121 /* Pods-AnimaTions.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 76BQSTQDWZ;
+				DEVELOPMENT_TEAM = 6NLG5S887D;
 				INFOPLIST_FILE = AnimaTions/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FF.AnimaTions;

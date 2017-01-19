@@ -8,6 +8,8 @@
 
 #import "RecipeCell.h"
 #import "TransitionAnimator.h"
+#import "UIView+Bluring.h"
+
 
 @interface RecipeCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *image;
@@ -26,6 +28,8 @@
 	CGFloat _andPositionY;
 	CGFloat _imagePositionY;
 	CGFloat _contentViewPositionY;
+	
+	long long _callAnimationCounter;
 }
 
 - (void)configWithData:(NSDictionary*)data
@@ -38,6 +42,10 @@
 	self.showButton.layer.masksToBounds = YES;
 	
 	
+	_callAnimationCounter = 0;
+	
+	
+	// _titleLabel.blurRadius = _subTitle.blurRadius = _andTitle.blurRadius = 2.0f;
 	
 	_showButtonPositionY = self.showButton.layer.position.y;
 	_subtitlePositionY = self.subTitle.layer.position.y;
@@ -46,9 +54,20 @@
 	_imagePositionY = self.image.layer.position.y;
 	_contentViewPositionY = self.contentView.layer.position.y;
 	
+	
 	self.subTitle.text = data[@"subtitle"];
 	self.titleLabel.text = data[@"title"];
 	self.image.image = [UIImage imageNamed:data[@"image"]];
+	
+	CGFloat radius = 3;
+	//[self.showButton blurWithRadius:radius];
+	//[self.showButton.titleLabel blurWithRadius:radius];
+//	[self.showButton.imageView blurWithRadius:radius];
+	
+	[self.subTitle blurWithRadius:radius];
+	[self.andTitle blurWithRadius:radius];
+	[self.titleLabel blurWithRadius:radius];
+	[self.image motionBlurWithSize:5];
 }
 
 - (void)prepareForReuse
@@ -119,6 +138,14 @@
 	CGFloat cellInset = startPoint - offset.y;
 	CGFloat visibleDelta =  cellInset / self.contentView.frame.size.height;
 	
+	
+	[self.subTitle layoutIfNeeded];
+	[self.andTitle layoutIfNeeded];
+	[self.titleLabel layoutIfNeeded];
+	[self.image layoutIfNeeded];
+
+	_callAnimationCounter++;
+	
 	if (cellInset < 0) {
 		self.bottomView.transform = CGAffineTransformMakeScale(1.0f - visibleDelta, 1.0f - visibleDelta);
 		self.titleLabel.transform = CGAffineTransformMakeScale(1, 1);
@@ -127,6 +154,9 @@
 		self.showButton.transform = CGAffineTransformMakeScale(1, 1);
 		
 		self.bottomView.alpha = 1.0f + visibleDelta * 1.5;
+		
+		
+		
 		//NSLog(@"BUTTON POSITION : %f",self.showButton.layer.position.y);
 		[self.showButton.layer setPosition:CGPointMake(self.showButton.layer.position.x, _showButtonPositionY)];
 		[self.subTitle.layer setPosition:CGPointMake(self.subTitle.layer.position.x, _subtitlePositionY)];
@@ -141,6 +171,8 @@
 		self.subTitle.alpha = 1.0f - visibleDelta * 5;
 		self.andTitle.alpha = 1.0f - visibleDelta * 4;
 		self.titleLabel.alpha = 1.0f - visibleDelta * 4;
+		
+		//[self.bottomView blurWithRadius:1.0f - visibleDelta * 4];
 		
 		
 		[self.showButton.layer setPosition:CGPointMake(self.showButton.layer.position.x, _showButtonPositionY - cellInset * 0.25 )];

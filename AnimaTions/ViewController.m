@@ -16,11 +16,13 @@
 @interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, RecipeCellDelegate, UIViewControllerTransitioningDelegate, TransitionAnimatorProtocol>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSArray* dataSource;
+
 @end
 
 @implementation ViewController
 {
 	NSIndexPath* _currentIndexPath;
+
 }
 
 - (void)viewDidLoad {
