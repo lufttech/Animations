@@ -19,6 +19,8 @@
 
 - (void)configWithData:(NSDictionary*)data;
 - (void)animateWithOffset:(CGPoint)offset;
+- (void)endDragging;
+- (void)endAnimation;
 - (void)transitionAnimationForCurrent:(BOOL)isCurrent isPresent:(BOOL)isPresent;
 - (void)transitionCompletionForCurrent:(BOOL)isCurrent isPresent:(BOOL)isPresent;
 - (void)setContentViewOffsetY:(CGFloat)offsetY;

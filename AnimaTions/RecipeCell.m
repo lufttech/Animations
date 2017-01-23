@@ -10,7 +10,8 @@
 #import "TransitionAnimator.h"
 #import "UIView+Bluring.h"
 
-
+#define kGaussianBlurRadius 3.f
+#define kMotionBlurSize 5.f
 @interface RecipeCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *showButton;
 @property (weak, nonatomic) IBOutlet UILabel *andTitle;
 @end
+
 
 @implementation RecipeCell
 {
@@ -40,8 +42,6 @@
 	self.showButton.layer.borderWidth = 1.0f;
 	self.showButton.layer.cornerRadius = 3.f;
 	self.showButton.layer.masksToBounds = YES;
-	
-	
 	_callAnimationCounter = 0;
 	
 	
@@ -59,20 +59,44 @@
 	self.titleLabel.text = data[@"title"];
 	self.image.image = [UIImage imageNamed:data[@"image"]];
 	
-	CGFloat radius = 3;
-	//[self.showButton blurWithRadius:radius];
-	//[self.showButton.titleLabel blurWithRadius:radius];
-//	[self.showButton.imageView blurWithRadius:radius];
 	
-	[self.subTitle blurWithRadius:radius];
-	[self.andTitle blurWithRadius:radius];
-	[self.titleLabel blurWithRadius:radius];
-	[self.image motionBlurWithSize:5];
+//	[self.subTitle blurWithRadius:kGaussianBlurRadius];
+//	[self.andTitle blurWithRadius:kGaussianBlurRadius];
+//	[self.titleLabel blurWithRadius:kGaussianBlurRadius];
+//	[self.image motionBlurWithSize:kMotionBlurSize];
 }
 
 - (void)prepareForReuse
 {
 	[super prepareForReuse];
+	//[self.image motionBlurWithSize:kMotionBlurSize];
+	//[self.image clearContext];
+//	[self.contentView reloadInputViews];
+//	[self reloadInputViews];
+//	[self.contentView layoutIfNeeded];
+//	[self layoutIfNeeded];
+	
+	NSLog(@"ReuseCell:",_indexPath.row);
+	
+	[self setNeedsDisplay];
+	[self setNeedsLayout];
+	[self setNeedsUpdateConstraints];
+	
+//	[self.subTitle clearContext];
+//	[self.andTitle clearContext];
+//	[self.titleLabel clearContext];
+//	[self.image clearContext];
+	
+//	[self.subTitle blurWithRadius:kGaussianBlurRadius];
+//	[self.andTitle blurWithRadius:kGaussianBlurRadius];
+//	[self.titleLabel blurWithRadius:kGaussianBlurRadius];
+//	[self.image motionBlurWithSize:kMotionBlurSize];
+	
+//	[self.subTitle setNeedsDisplay];
+//	[self.andTitle setNeedsDisplay];
+//	[self.titleLabel setNeedsDisplay];
+//	[self.image setNeedsDisplay];
+	
 	[self.showButton.layer setPosition:CGPointMake(self.showButton.layer.position.x, _showButtonPositionY)];
 	[self.subTitle.layer setPosition:CGPointMake(self.subTitle.layer.position.x, _subtitlePositionY)];
 	[self.image.layer setPosition:CGPointMake(self.image.layer.position.x, _imagePositionY)];
@@ -131,7 +155,27 @@
 		}
 	}
 }
-
+- (void)endAnimation
+{
+	[self.image clearContext];
+//	[self.subTitle clearContext];
+//	[self.andTitle clearContext];
+//	[self.titleLabel clearContext];
+//	self.image.layer.sublayers = nil;
+//	self.subTitle.layer.sublayers = nil;
+//	self.andTitle.layer.sublayers = nil;
+//	self.titleLabel.layer.sublayers = nil;
+//	[self.subTitle showNormalContextIfExist];
+//	[self.andTitle showNormalContextIfExist];
+//	[self.titleLabel showNormalContextIfExist];
+}
+- (void)endDragging{
+	[self.subTitle showMotionContextIfExist];
+	[self.andTitle showMotionContextIfExist];
+	[self.titleLabel showMotionContextIfExist];
+	
+	[self.image showMotionContextIfExist];
+}
 - (void)animateWithOffset:(CGPoint)offset
 {
 	CGFloat startPoint = self.contentView.frame.size.height * self.indexPath.row;
@@ -185,6 +229,22 @@
 		self.andTitle.transform = CGAffineTransformMakeScale(1.0f - visibleDelta, 1.0f - visibleDelta);
 		
 		self.bottomView.alpha = 1.f;
+	}
+	
+	if ((visibleDelta > 0.15f) || (visibleDelta < - 0.3f)) {
+//		[self.subTitle showGausianContextIfExist];
+//		[self.andTitle showGausianContextIfExist];
+//		[self.titleLabel showGausianContextIfExist];
+		
+	}else{
+		[self.subTitle clearContext];
+		[self.andTitle clearContext];
+		[self.titleLabel clearContext];
+//		[self.image clearContext];
+//		self.subTitle.layer.sublayers = nil;
+//		self.andTitle.layer.sublayers = nil;
+//		self.titleLabel.layer.sublayers = nil;
+//		self.image.layer.sublayers = nil;
 	}
 	//NSLog(@"StartCell: %lu\ninset %f\nforOffset: %f\ndelta:%f\n\n",self.indexPath.row, cellInset, offset.y,visibleDelta);
 	

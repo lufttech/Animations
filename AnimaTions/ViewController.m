@@ -107,7 +107,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 			if(different > 0) skipedIndex --;
 			if(different <= 0) skipedIndex ++;
 			
-			NSLog(@"RoundedCellToSwipe: %f\n",different);
+			NSLog(@"Velocity: %@",NSStringFromCGPoint(velocity));
 			
 			if ((different > 0.15f) && (different < 0.45f)) {
 				roundedCellToSwipe -= labs(skipedIndex);
@@ -120,12 +120,54 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 			} else if (roundedCellToSwipe >= self.dataSource.count - 1) {
 				roundedCellToSwipe = (float)self.dataSource.count - 1;
 			}
-			
+			NSArray* visible = self.collectionView.visibleCells;
+			if (_currentIndexPath.row != roundedCellToSwipe) {
+				[visible enumerateObjectsUsingBlock:^(RecipeCell *cell, NSUInteger idx, BOOL * _Nonnull stop) {
+					[cell endDragging];
+				}];
+			}
 			_currentIndexPath = [NSIndexPath indexPathForRow:roundedCellToSwipe inSection:0];
 			
-			[self.collectionView scrollToItemAtIndexPath:_currentIndexPath
-										atScrollPosition:UICollectionViewScrollPositionTop
-												animated:YES];
+//			[UIView animateWithDuration:1.0
+//								  delay:0
+//								options:UIViewAnimationOptionBeginFromCurrentState
+//							 animations:^{
+//								 [self.collectionView setContentOffset:CGPointMake(0, 0)];
+//							 } completion:^(BOOL finished) {
+//								 if (finished) {
+//									 [UIView animateWithDuration:1.0
+//														   delay:0
+//														 options:UIViewAnimationOptionBeginFromCurrentState
+//													  animations:^{
+//														  [self.collectionView setContentOffset:CGPointMake(0, _currentIndexPath.row * self.view.frame.size.height*0.90)];
+//													  }completion:nil];
+//								 }
+//							 }];
+			
+//			[UIView animateKeyframesWithDuration:1
+//										   delay:0
+//										 options:UIViewAnimationOptionBeginFromCurrentState
+//									  animations:^{
+//										  [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.5 animations:^{
+//											  [self.collectionView setContentOffset:CGPointMake(0, _currentIndexPath.row * self.view.frame.size.height*0.90)];
+//											  //[self.collectionView setContentOffset:CGPointMake(floorf(index/2) * elementWidth, 0)];
+//										  }];
+//										  [UIView addKeyframeWithRelativeStartTime:0.5 relativeDuration:0.5 animations:^{
+//											  [self.collectionView setContentOffset:CGPointMake(0, _currentIndexPath.row * self.view.frame.size.height*0.90)];
+//											  //[self.collectionView setContentOffset:CGPointMake(index*elementWidth, 0)];
+//										  }];
+//									  } completion:^(BOOL finished) {
+//										  //Completion Block
+//									  }];
+			
+			[UIView animateWithDuration:.5
+								  delay:0
+								options:UIViewAnimationCurveEaseOut
+							 animations:^{
+								 [self.collectionView setContentOffset:CGPointMake(0, _currentIndexPath.row * self.view.frame.size.height*0.90) animated:NO];
+							 } completion:nil];
+//			[self.collectionView setContentOffset:CGPointMake(0, _currentIndexPath.row * self.view.frame.size.height*0.90) animated:YES];
+
 		}
 	}
 }
@@ -146,9 +188,13 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 	}
 }
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
-{	NSLog(@"END OF SCROLLING");
+{	//NSLog(@"END OF SCROLLING");
 	if ([scrollView isKindOfClass:[UICollectionView class]]) {
-		//[self animateCellsWithOffset:scrollView.contentOffset isEndPage:YES];
+		NSArray* visible = self.collectionView.visibleCells;
+		
+		[visible enumerateObjectsUsingBlock:^(RecipeCell *cell, NSUInteger idx, BOOL * _Nonnull stop) {
+			[cell endAnimation];
+		}];
 	}
 }
 
