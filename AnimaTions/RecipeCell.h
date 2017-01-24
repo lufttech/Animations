@@ -18,9 +18,7 @@
 @property (nonatomic, weak) id <RecipeCellDelegate> delegate;
 
 - (void)configWithData:(NSDictionary*)data;
-- (void)animateWithOffset:(CGPoint)offset;
-- (void)endDragging;
-- (void)endAnimation;
+- (void)animateWithOffset:(CGPoint)offset isFinaly:(BOOL)isFynaly;
 - (void)transitionAnimationForCurrent:(BOOL)isCurrent isPresent:(BOOL)isPresent;
 - (void)transitionCompletionForCurrent:(BOOL)isCurrent isPresent:(BOOL)isPresent;
 - (void)setContentViewOffsetY:(CGFloat)offsetY;

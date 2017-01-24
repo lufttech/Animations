@@ -12,7 +12,8 @@
 @property (nonatomic, assign) NSInteger selectedSegmentIndex;
 @property (nonatomic, strong) NSArray *sectionTitles;
 
-
+@property (nonatomic, strong) IBInspectable UIColor* underLineColor;
+@property (nonatomic, strong) IBInspectable UIColor* selectionColor;
 
 @property (nonatomic, strong) NSDictionary *titleTextAttributes UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) NSDictionary *selectedTitleTextAttributes UI_APPEARANCE_SELECTOR;

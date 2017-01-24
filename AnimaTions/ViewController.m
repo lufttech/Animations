@@ -13,9 +13,14 @@
 #import <LoremIpsum/LoremIpsum.h>
 #import "TransitionAnimator.h"
 
+#define kMinDuration 0.5f
+
 @interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, RecipeCellDelegate, UIViewControllerTransitioningDelegate, TransitionAnimatorProtocol>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSArray* dataSource;
+@property (strong, nonnull) NSMutableSet *lastVisibleCells;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topCollectionConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomCollectionConstraint;
 
 @end
 
@@ -28,9 +33,10 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	_currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+	
 	[self.collectionView setContentInset:UIEdgeInsetsMake(0, 0, self.view.frame.size.height*0.1f, 0)];
-	 //setContentSize:CGSizeMake(self.collectionView.contentSize.width, self.collectionView.contentSize.height + self.view.frame.size.height*0.1f)];
 	[self loadData];
+	
 }
 
 
@@ -78,12 +84,17 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 	return 0;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	
+}
+
 - (void)animateCellsWithOffset:(CGPoint)offset
 {
 	NSArray* visible = self.collectionView.visibleCells;
 	
 	[visible enumerateObjectsUsingBlock:^(RecipeCell *cell, NSUInteger idx, BOOL * _Nonnull stop) {
-		[cell animateWithOffset:offset];
+		[cell animateWithOffset:offset isFinaly:NO];
 	}];
 }
 
@@ -107,7 +118,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 			if(different > 0) skipedIndex --;
 			if(different <= 0) skipedIndex ++;
 			
-			NSLog(@"Velocity: %@",NSStringFromCGPoint(velocity));
+			
 			
 			if ((different > 0.15f) && (different < 0.45f)) {
 				roundedCellToSwipe -= labs(skipedIndex);
@@ -120,54 +131,35 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 			} else if (roundedCellToSwipe >= self.dataSource.count - 1) {
 				roundedCellToSwipe = (float)self.dataSource.count - 1;
 			}
-			NSArray* visible = self.collectionView.visibleCells;
-			if (_currentIndexPath.row != roundedCellToSwipe) {
-				[visible enumerateObjectsUsingBlock:^(RecipeCell *cell, NSUInteger idx, BOOL * _Nonnull stop) {
-					[cell endDragging];
-				}];
-			}
-			_currentIndexPath = [NSIndexPath indexPathForRow:roundedCellToSwipe inSection:0];
-			
-//			[UIView animateWithDuration:1.0
-//								  delay:0
-//								options:UIViewAnimationOptionBeginFromCurrentState
-//							 animations:^{
-//								 [self.collectionView setContentOffset:CGPointMake(0, 0)];
-//							 } completion:^(BOOL finished) {
-//								 if (finished) {
-//									 [UIView animateWithDuration:1.0
-//														   delay:0
-//														 options:UIViewAnimationOptionBeginFromCurrentState
-//													  animations:^{
-//														  [self.collectionView setContentOffset:CGPointMake(0, _currentIndexPath.row * self.view.frame.size.height*0.90)];
-//													  }completion:nil];
-//								 }
-//							 }];
-			
-//			[UIView animateKeyframesWithDuration:1
-//										   delay:0
-//										 options:UIViewAnimationOptionBeginFromCurrentState
-//									  animations:^{
-//										  [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.5 animations:^{
-//											  [self.collectionView setContentOffset:CGPointMake(0, _currentIndexPath.row * self.view.frame.size.height*0.90)];
-//											  //[self.collectionView setContentOffset:CGPointMake(floorf(index/2) * elementWidth, 0)];
-//										  }];
-//										  [UIView addKeyframeWithRelativeStartTime:0.5 relativeDuration:0.5 animations:^{
-//											  [self.collectionView setContentOffset:CGPointMake(0, _currentIndexPath.row * self.view.frame.size.height*0.90)];
-//											  //[self.collectionView setContentOffset:CGPointMake(index*elementWidth, 0)];
-//										  }];
-//									  } completion:^(BOOL finished) {
-//										  //Completion Block
-//									  }];
-			
-			[UIView animateWithDuration:.5
-								  delay:0
-								options:UIViewAnimationCurveEaseOut
-							 animations:^{
-								 [self.collectionView setContentOffset:CGPointMake(0, _currentIndexPath.row * self.view.frame.size.height*0.90) animated:NO];
-							 } completion:nil];
-//			[self.collectionView setContentOffset:CGPointMake(0, _currentIndexPath.row * self.view.frame.size.height*0.90) animated:YES];
 
+			
+			NSArray* visibleCells = [self.collectionView visibleCells];
+			
+			
+			CGFloat time = self.view.frame.size.height / (velocity.y * 1000);
+			if (time > kMinDuration) time = kMinDuration;
+			NSLog(@"Time: %f",time);
+			if (_currentIndexPath.row != roundedCellToSwipe) {
+				_currentIndexPath = [NSIndexPath indexPathForRow:roundedCellToSwipe inSection:0];
+				[UIView animateWithDuration:fabs(time)
+									  delay:0
+									options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction | UIViewKeyframeAnimationOptionLayoutSubviews
+								 animations:^{
+									 
+									 CGPoint nextOffset = CGPointMake(0, _currentIndexPath.row * self.view.frame.size.height*0.90);
+									 
+									 [visibleCells enumerateObjectsUsingBlock:^(RecipeCell *cell, NSUInteger idx, BOOL * _Nonnull stop) {
+										 [cell animateWithOffset:nextOffset isFinaly:YES];
+									 }];
+									 [self.collectionView setContentOffset:nextOffset animated:NO];
+									 [self.view layoutIfNeeded];
+								 } completion:nil];
+				
+			}else{
+				[self.collectionView scrollToItemAtIndexPath:_currentIndexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+				[self.view layoutIfNeeded];
+			}
+			
 		}
 	}
 }
@@ -190,11 +182,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {	//NSLog(@"END OF SCROLLING");
 	if ([scrollView isKindOfClass:[UICollectionView class]]) {
-		NSArray* visible = self.collectionView.visibleCells;
-		
-		[visible enumerateObjectsUsingBlock:^(RecipeCell *cell, NSUInteger idx, BOOL * _Nonnull stop) {
-			[cell endAnimation];
-		}];
+
 	}
 }
 
@@ -232,14 +220,6 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 
 - (void)prepareAnimatedViewsForPresentingViewController:(BOOL)isPresented
 {
-	//	if (isPresented) {
-	//
-	//	}else{
-	//		NSArray* visible = self.collectionView.visibleCells;
-	//		[visible enumerateObjectsUsingBlock:^(RecipeCell *cell, NSUInteger idx, BOOL * _Nonnull stop) {
-	//			[cell transitionAnimation:idx];
-	//		}];
-	//	}
 }
 - (void)animateViewsForPresentingViewController:(BOOL)isPresented
 {

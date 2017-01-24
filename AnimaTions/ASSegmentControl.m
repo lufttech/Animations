@@ -11,7 +11,6 @@
 
 @property (nonatomic) CGSize segmentSize;
 @property (nonatomic, strong) CALayer* imageLayer;
-//@property (nonatomic, strong) CAShapeLayer *selectionIndicatorStripLayer;
 @property (nonatomic, strong) CAShapeLayer *underlay;
 @property (nonatomic, strong) CAShapeLayer *overline;
 @end
@@ -85,6 +84,13 @@
 - (void)commonInit {
 	
 	//
+	
+	if (!_underLineColor) {
+		_underLineColor = [UIColor colorWithRed:246.0f/255.f green:246.0f/255.f blue:246.0f/255.f alpha:1];
+	}
+	if (!_selectionColor) {
+		_selectionColor = [UIColor darkGrayColor];
+	}
 	[self layoutIfNeeded];
 	self.segmentSize = CGSizeMake(self.frame.size.width / self.sectionTitles.count, self.frame.size.height);
 	self.selectedSegmentIndex = 0;
@@ -104,14 +110,6 @@
 
 #pragma mark - Drawing
 
-//- (CALayer *)selectionIndicatorStripLayer
-//{
-//	if (!_selectionIndicatorStripLayer) {
-//		_selectionIndicatorStripLayer = [CAShapeLayer layer];
-//		_selectionIndicatorStripLayer.backgroundColor = [UIColor darkGrayColor].CGColor;
-//	}
-//	return _selectionIndicatorStripLayer;
-//}
 - (void)drawUnderLinePath:(NSInteger)prevIndex
 {
 	UIBezierPath *path = [UIBezierPath bezierPath];
@@ -124,7 +122,7 @@
 		[path addLineToPoint:CGPointMake( _selectedSegmentIndex * self.segmentSize.width, 1.0)];
 	}
 	_underlay.path = path.CGPath;
-	_underlay.strokeColor = [[UIColor darkGrayColor] CGColor];
+	_underlay.strokeColor = [_selectionColor CGColor];
 	_underlay.fillColor = nil;
 	_underlay.lineWidth = 2.0f;
 	_underlay.lineJoin = kCALineJoinBevel;
@@ -142,7 +140,7 @@
 		[path addLineToPoint:CGPointMake( (_selectedSegmentIndex + 1) * self.segmentSize.width, 1.0)];
 	}
 	_overline.path = path.CGPath;
-	_overline.strokeColor = [[UIColor colorWithRed:246.0f/255.f green:246.0f/255.f blue:246.0f/255.f alpha:1] CGColor];
+	_overline.strokeColor = [_underLineColor CGColor];
 	//_overline.strokeColor = [[UIColor blueColor] CGColor];
 	_overline.fillColor = nil;
 	_overline.lineWidth = 2.0f;
@@ -163,7 +161,7 @@
 {
 	if (!_underlay) {
 		_underlay = [CAShapeLayer layer];
-		_underlay.backgroundColor = [UIColor colorWithRed:246.0f/255.f green:246.0f/255.f blue:246.0f/255.f alpha:1].CGColor;
+		_underlay.backgroundColor = _underLineColor.CGColor;
 		[_underlay setFrame:CGRectMake(0, self.frame.size.height - _underlayThickness, self.frame.size.width, _underlayThickness)];
 		[self drawUnderLinePath:0];
 	}
@@ -244,13 +242,6 @@
 	}];
 	[self.layer addSublayer:self.underlay];
 	[self.layer addSublayer:self.overline];
-	
-	//self.selectionIndicatorStripLayer.frame = [self frameForSelectionIndicator];
-//	
-//	[self.layer addSublayer:self.underlay];
-	
-	
-	//[self.layer addSublayer:self.selectionIndicatorStripLayer];
 }
 
 - (void)updateSegmentsRects {
@@ -284,7 +275,6 @@
 		sectionsCount = [self.sectionTitles count];
 		
 		if (segment != self.selectedSegmentIndex && segment < self.sectionTitles.count) {
-			// Check if we have to do anything with the touch event
 			[self setSelectedSegmentIndex:segment animated:YES notify:YES];
 		}
 	}
@@ -328,7 +318,6 @@
 		pathAnimationOver.duration = 0.3;
 		pathAnimationOver.fromValue = [NSNumber numberWithFloat:0.0f];
 		pathAnimationOver.toValue = [NSNumber numberWithFloat:1.0f];
-		//pathAnimationOver.beginTime = beginTime + 0.1;
 		
 		[_underlay addAnimation:pathAnimationUnder forKey:@"strokeEnd"];
 		[_overline addAnimation:pathAnimationOver forKey:@"strokeEnd"];

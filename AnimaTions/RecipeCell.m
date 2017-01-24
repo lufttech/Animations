@@ -44,9 +44,6 @@
 	self.showButton.layer.masksToBounds = YES;
 	_callAnimationCounter = 0;
 	
-	
-	// _titleLabel.blurRadius = _subTitle.blurRadius = _andTitle.blurRadius = 2.0f;
-	
 	_showButtonPositionY = self.showButton.layer.position.y;
 	_subtitlePositionY = self.subTitle.layer.position.y;
 	_titlePositionY = self.titleLabel.layer.position.y;
@@ -58,44 +55,13 @@
 	self.subTitle.text = data[@"subtitle"];
 	self.titleLabel.text = data[@"title"];
 	self.image.image = [UIImage imageNamed:data[@"image"]];
-	
-	
-//	[self.subTitle blurWithRadius:kGaussianBlurRadius];
-//	[self.andTitle blurWithRadius:kGaussianBlurRadius];
-//	[self.titleLabel blurWithRadius:kGaussianBlurRadius];
-//	[self.image motionBlurWithSize:kMotionBlurSize];
 }
 
 - (void)prepareForReuse
 {
 	[super prepareForReuse];
-	//[self.image motionBlurWithSize:kMotionBlurSize];
-	//[self.image clearContext];
-//	[self.contentView reloadInputViews];
-//	[self reloadInputViews];
-//	[self.contentView layoutIfNeeded];
-//	[self layoutIfNeeded];
 	
-	NSLog(@"ReuseCell:",_indexPath.row);
-	
-	[self setNeedsDisplay];
 	[self setNeedsLayout];
-	[self setNeedsUpdateConstraints];
-	
-//	[self.subTitle clearContext];
-//	[self.andTitle clearContext];
-//	[self.titleLabel clearContext];
-//	[self.image clearContext];
-	
-//	[self.subTitle blurWithRadius:kGaussianBlurRadius];
-//	[self.andTitle blurWithRadius:kGaussianBlurRadius];
-//	[self.titleLabel blurWithRadius:kGaussianBlurRadius];
-//	[self.image motionBlurWithSize:kMotionBlurSize];
-	
-//	[self.subTitle setNeedsDisplay];
-//	[self.andTitle setNeedsDisplay];
-//	[self.titleLabel setNeedsDisplay];
-//	[self.image setNeedsDisplay];
 	
 	[self.showButton.layer setPosition:CGPointMake(self.showButton.layer.position.x, _showButtonPositionY)];
 	[self.subTitle.layer setPosition:CGPointMake(self.subTitle.layer.position.x, _subtitlePositionY)];
@@ -155,28 +121,8 @@
 		}
 	}
 }
-- (void)endAnimation
-{
-	[self.image clearContext];
-//	[self.subTitle clearContext];
-//	[self.andTitle clearContext];
-//	[self.titleLabel clearContext];
-//	self.image.layer.sublayers = nil;
-//	self.subTitle.layer.sublayers = nil;
-//	self.andTitle.layer.sublayers = nil;
-//	self.titleLabel.layer.sublayers = nil;
-//	[self.subTitle showNormalContextIfExist];
-//	[self.andTitle showNormalContextIfExist];
-//	[self.titleLabel showNormalContextIfExist];
-}
-- (void)endDragging{
-	[self.subTitle showMotionContextIfExist];
-	[self.andTitle showMotionContextIfExist];
-	[self.titleLabel showMotionContextIfExist];
-	
-	[self.image showMotionContextIfExist];
-}
-- (void)animateWithOffset:(CGPoint)offset
+
+- (void)animateWithOffset:(CGPoint)offset isFinaly:(BOOL)isFynaly
 {
 	CGFloat startPoint = self.contentView.frame.size.height * self.indexPath.row;
 	CGFloat cellInset = startPoint - offset.y;
@@ -197,27 +143,26 @@
 		self.andTitle.transform = CGAffineTransformMakeScale(1, 1);
 		self.showButton.transform = CGAffineTransformMakeScale(1, 1);
 		
-		self.bottomView.alpha = 1.0f + visibleDelta * 1.5;
+		if (isFynaly) {
+			self.titleLabel.alpha = 0;
+			self.subTitle.alpha = 0;
+			self.andTitle.alpha = 0;
+			self.showButton.alpha = 0;
+		}else{
+			self.bottomView.alpha = 1.0f + visibleDelta * 1.5;
+		}
 		
-		
-		
-		//NSLog(@"BUTTON POSITION : %f",self.showButton.layer.position.y);
 		[self.showButton.layer setPosition:CGPointMake(self.showButton.layer.position.x, _showButtonPositionY)];
 		[self.subTitle.layer setPosition:CGPointMake(self.subTitle.layer.position.x, _subtitlePositionY)];
 		
 		[self.image.layer setPosition:CGPointMake(self.image.layer.position.x, _imagePositionY - cellInset * 0.25 )];
 	}else{
-		
-		
 		self.bottomView.transform = CGAffineTransformMakeScale(1, 1);
 		
 		self.showButton.alpha = 1.0f - visibleDelta * 6;
 		self.subTitle.alpha = 1.0f - visibleDelta * 5;
 		self.andTitle.alpha = 1.0f - visibleDelta * 4;
 		self.titleLabel.alpha = 1.0f - visibleDelta * 4;
-		
-		//[self.bottomView blurWithRadius:1.0f - visibleDelta * 4];
-		
 		
 		[self.showButton.layer setPosition:CGPointMake(self.showButton.layer.position.x, _showButtonPositionY - cellInset * 0.25 )];
 		[self.subTitle.layer setPosition:CGPointMake(self.subTitle.layer.position.x, _subtitlePositionY + cellInset * 0.025 )];
@@ -231,22 +176,7 @@
 		self.bottomView.alpha = 1.f;
 	}
 	
-	if ((visibleDelta > 0.15f) || (visibleDelta < - 0.3f)) {
-//		[self.subTitle showGausianContextIfExist];
-//		[self.andTitle showGausianContextIfExist];
-//		[self.titleLabel showGausianContextIfExist];
-		
-	}else{
-		[self.subTitle clearContext];
-		[self.andTitle clearContext];
-		[self.titleLabel clearContext];
-//		[self.image clearContext];
-//		self.subTitle.layer.sublayers = nil;
-//		self.andTitle.layer.sublayers = nil;
-//		self.titleLabel.layer.sublayers = nil;
-//		self.image.layer.sublayers = nil;
-	}
-	//NSLog(@"StartCell: %lu\ninset %f\nforOffset: %f\ndelta:%f\n\n",self.indexPath.row, cellInset, offset.y,visibleDelta);
+	NSLog(@"StartCell: %lu\ninset %f\nforOffset: %f\ndelta:%f\n\n",self.indexPath.row, cellInset, offset.y,visibleDelta);
 	
 
 }

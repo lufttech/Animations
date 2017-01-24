@@ -12,8 +12,6 @@
 #import <CoreText/CoreText.h>
 #import "UIScrollView+App.h"
 #import "UIViewController+Configurator.h"
-#import "RecipePageViewController.h"
-#import "RecipePageViewController.h"
 #import "IngredientsTableViewController.h"
 #import "TipsTableViewController.h"
 #import "ASSegmentControl.h"
@@ -251,12 +249,9 @@
 }
 
 #pragma mark - Actions
-//- (void)segmentedControlChangedValue:(HMSegmentedControl*)control
 - (IBAction)segmentControlChangedValue:(ASSegmentControl*)sender {
 	_currentPage = sender.selectedSegmentIndex;
-	float pageWidth = (float)self.containersScrollView.bounds.size.width - kLeftInset;
 	
-	//long roundedCellToSwipe = lroundf(self.containersScrollView.contentOffset.x / pageWidth);
 	[self.containersScrollView scrollRectToVisible:CGRectMake(_currentPage * self.containersScrollView.frame.size.width - kLeftInset, 0, self.containersScrollView.frame.size.width, self.containersScrollView.frame.size.height) animated:YES];
 	[self.containers enumerateObjectsUsingBlock:^(UIView* view, NSUInteger idx, BOOL * _Nonnull stop) {
 		[UIView animateWithDuration:0.3 animations:^{
@@ -266,30 +261,6 @@
 		
 	}];
 }
-//{
-//	UIViewController* selectedViewController;
-//	
-////	switch (control.selectedSegmentIndex) {
-////		case 0:
-////		{
-////		selectedViewController = self.ingredientsViewController;
-////		}
-////			break;
-////		case 1:
-////		{
-////		selectedViewController = self.tipsViewController;
-////		}
-////			break;
-////		case 2:
-////		{
-////		selectedViewController = self.nutritionViewController;
-////		}
-////			break;
-////			
-////  default:
-////			break;
-////	}
-//}
 - (IBAction)backAction:(id)sender {
 	[self.scrollView stop];
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:nil];

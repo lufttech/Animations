@@ -143,7 +143,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="8ef-4g-cGW"/>
                     <connections>
+                        <outlet property="bottomCollectionConstraint" destination="MVu-PG-CZV" id="nu5-XR-j0c"/>
                         <outlet property="collectionView" destination="RDK-Gw-k2p" id="CK5-Bd-Kcv"/>
+                        <outlet property="topCollectionConstraint" destination="cWI-Yx-hfo" id="gnV-AO-XAW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
