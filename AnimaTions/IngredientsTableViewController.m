@@ -47,6 +47,5 @@
 	cell.ingredientName.text = _cellData[indexPath.row];
 	return cell;
 }
-\
 
 @end

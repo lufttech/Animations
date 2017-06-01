@@ -124,8 +124,6 @@
 
 - (void)prepareAnimatedViewsForPresentingViewController:(BOOL)isPresented
 {
-	
-
 	[self.view layoutIfNeeded];
 	if (isPresented) {
 		_cookingTimeView.alpha = 0.5f;
@@ -209,10 +207,11 @@
 	float width = (float)scrollView.bounds.size.width - kLeftInset;
 	CGFloat different = scrollView.contentOffset.x / width;
 	BOOL isFromLeftToRight;
-	if (_lastContentOffset > scrollView.contentOffset.x)
+    if (_lastContentOffset > scrollView.contentOffset.x){
 		isFromLeftToRight = NO;
-	else if (_lastContentOffset < scrollView.contentOffset.x)
+    }else {
 		isFromLeftToRight = YES;
+    }
 	
 	_lastContentOffset = scrollView.contentOffset.x;
 	

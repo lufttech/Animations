@@ -129,19 +129,21 @@
 	CGFloat visibleDelta =  cellInset / self.contentView.frame.size.height;
 	
 	
-	[self.subTitle layoutIfNeeded];
-	[self.andTitle layoutIfNeeded];
-	[self.titleLabel layoutIfNeeded];
-	[self.image layoutIfNeeded];
-
+//	[self.subTitle layoutIfNeeded];
+//	[self.andTitle layoutIfNeeded];
+//	[self.titleLabel layoutIfNeeded];
+//	[self.image layoutIfNeeded];
+//	[self.bottomView layoutIfNeeded];
+	
 	_callAnimationCounter++;
 	
 	if (cellInset < 0) {
+		CGAffineTransform scale = CGAffineTransformIdentity;
 		self.bottomView.transform = CGAffineTransformMakeScale(1.0f - visibleDelta, 1.0f - visibleDelta);
-		self.titleLabel.transform = CGAffineTransformMakeScale(1, 1);
-		self.subTitle.transform = CGAffineTransformMakeScale(1, 1);
-		self.andTitle.transform = CGAffineTransformMakeScale(1, 1);
-		self.showButton.transform = CGAffineTransformMakeScale(1, 1);
+		self.titleLabel.transform = scale;
+		self.subTitle.transform = scale;
+		self.andTitle.transform = scale;
+		self.showButton.transform = scale;
 		
 		if (isFynaly) {
 			self.titleLabel.alpha = 0;
@@ -157,7 +159,7 @@
 		
 		[self.image.layer setPosition:CGPointMake(self.image.layer.position.x, _imagePositionY - cellInset * 0.25 )];
 	}else{
-		self.bottomView.transform = CGAffineTransformMakeScale(1, 1);
+		self.bottomView.transform = CGAffineTransformIdentity;//CGAffineTransformMakeScale(1, 1);
 		
 		self.showButton.alpha = 1.0f - visibleDelta * 6;
 		self.subTitle.alpha = 1.0f - visibleDelta * 5;
@@ -170,7 +172,7 @@
 		
 		self.showButton.transform = CGAffineTransformMakeScale(1.0f + visibleDelta , 1.0f + visibleDelta);
 		self.titleLabel.transform = CGAffineTransformMakeScale(1.0f - visibleDelta, 1.0f - visibleDelta);
-		self.subTitle.transform = CGAffineTransformMakeScale(1.0f - visibleDelta * 1.25, 1.0f - visibleDelta * 1.25);
+		self.subTitle.transform = CGAffineTransformMakeScale(1.0f - visibleDelta, 1.0f - visibleDelta);//CGAffineTransformMakeScale(1.0f - visibleDelta * 1.25, 1.0f - visibleDelta * 1.25);
 		self.andTitle.transform = CGAffineTransformMakeScale(1.0f - visibleDelta, 1.0f - visibleDelta);
 		
 		self.bottomView.alpha = 1.f;
